@@ -1,0 +1,18 @@
+#top {
+	text-align: right;
+	width: 97%
+}
+
+#maincontents {
+	position: absolute;
+	top: 160px;
+	left: 220px;
+	width: 80%
+}
+
+#menu {
+	position: absolute;
+	top: 160px;
+	left: 20px;
+	width: 200px
+}
