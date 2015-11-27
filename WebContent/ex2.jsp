@@ -14,6 +14,7 @@
 	<p> 로그인 성공.</p> <br>
 		사원이름 : <%= session.getAttribute("userName") %><br>
 		<a href="logout.jsp">로그아웃</a>
+		<a href="main.jsp">메인으로</a>
 	<% } %> 
 </body>
 </html>

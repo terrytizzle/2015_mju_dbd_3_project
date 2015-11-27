@@ -8,8 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>main page</title>
 <link rel="stylesheet" type="text/css" href="./CSS/style.css"/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </html>
 <body>
+	<jsp:include page="share/header.jsp">
+		<jsp:param name="current" value="home" />
+	</jsp:include>
 	<div id="warp">
 		<div id="top">
 			<p>환영합니다. 000님</p>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="2015_mju_dbd_3_project">
+    <wb-module deploy-name="DBDproject_temp">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="java-output-path" value="/2015_mju_dbd_3_project/build/classes"/>
-        <property name="context-root" value="2015_mju_dbd_3_project"/>
+        <property name="context-root" value="DBDproject_temp"/>
+        <property name="java-output-path" value="/DBDproject_temp/build/classes"/>
     </wb-module>
 </project-modules>

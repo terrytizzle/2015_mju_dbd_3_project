@@ -12,5 +12,6 @@ session.invalidate();
 	로그아웃 되었습니다.
 	<p>
 	<a href="ex2.jsp">페이지로 돌아가기</a>
+	<a href="main.jsp">메인으로</a>
 </body>
 </html>
