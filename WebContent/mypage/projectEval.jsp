@@ -8,19 +8,6 @@
 <title>프로젝트 평가</title>
 </head>
 <body>
-
- <form name="form1" method="post" action="mypage.jsp">
- <input type="submit" name="Submit" value="내정보 조회"></form>
- 
- <form name="form2" method="post" action="mypageEdit.jsp">
- <input type="submit" name="Submit" value="내정보 수정"> </form>
- 
- <form name="form3" method="post" action="myProject.jsp">
- <input type="submit" name="Submit" value="내 프로젝트 조회"></form>
- 
- <form name="form4" method="post" action="projectEval.jsp">
- <input type="submit" name="Submit" value="내 프로젝트 평가"></form>
-
 <table width="80%" border="1">
  <tr>
  <td>프로젝트 명</td>
@@ -36,7 +23,7 @@
  try {
  String DB_SERVER = "localhost:3306";
  String DB_SERVER_USERNAME = "root";
- String DB_SERVER_PASSWORD = "admin";
+ String DB_SERVER_PASSWORD = "delab";
  String DB_DATABASE = "mjsolution";
 
  String JDBC_URL = "jdbc:mysql://" + DB_SERVER + "/" + DB_DATABASE;
