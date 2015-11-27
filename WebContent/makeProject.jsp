@@ -1,34 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="java.sql.*" %>
+    <%@ page import="java.sql.*" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>프로젝트 평가</title>
-</head>
-<body>
-
- <form name="form1" method="post" action="mypage.jsp">
- <input type="submit" name="Submit" value="내정보 조회"></form>
- 
- <form name="form2" method="post" action="mypageEdit.jsp">
- <input type="submit" name="Submit" value="내정보 수정"> </form>
- 
- <form name="form3" method="post" action="myProject.jsp">
- <input type="submit" name="Submit" value="내 프로젝트 조회"></form>
- 
- <form name="form4" method="post" action="projectEval.jsp">
- <input type="submit" name="Submit" value="내 프로젝트 평가"></form>
-
-<table width="80%" border="1">
+<title>프로젝트 생성</title>
+ </head>
+ <body>
+ <p>프로젝트 생성 Test</p>
+ <form name="form1" method="post" action="showProject.jsp">
+ <p>프로젝트 ID : <input type="text" name="id"></p>
+ <p>프로젝트 명 : <input type="text" name="name"></p>
+ <p>PM명 : <input type="text" name="PM name"></p>
+ <p>발주처 : <input type="text" name="Owner"></p>
+ <p>프로젝트 내용 : <input type="text" name="describe"></p>
+ <p>팀원 : 
+ <table width="100px" border="1">
+  
  <tr>
- <td>프로젝트 명</td>
+ <td>직원번호</td>
  <td>직원이름</td>
- <td width="200">직무</td>
  </tr>
- 
- <%
+
+<%
  Connection con = null;
  PreparedStatement pstmt = null;
  ResultSet rs = null; 
@@ -43,25 +39,22 @@
 
  Class.forName("com.mysql.jdbc.Driver");
  con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
- String sql = "select * from works_for,project,worker where works_for.project_id = project.project_id and works_for.worker_id = worker.worker_id"; //sql 실행구문
+ String sql = "select * from worker"; //sql 실행구문
  pstmt = con.prepareStatement(sql);
  rs = pstmt.executeQuery();
 
  while(rs.next()) {
- String pname = rs.getString("project_name");
+ String id = rs.getString("worker_id");
  String name = rs.getString("worker_name");
- String duty = rs.getString("works_duty");
 
-%> 
-
-<tr>
- <td width="100"> <%=pname%> </td>
- <td width="100"> <%=name%> </td>
- <td width="100"> <%=duty%> </td>
+%>
  
-
+ <tr>
+ <td width="200"> <%=id%> </td>
+ <td width="200"> <%=name%> </td>
  </tr>
-<%
+ 
+ <%
  }
  } catch(Exception e) {
  out.println(e);
@@ -72,5 +65,9 @@
  }
 %>
  </table>
-</body>
-</html>
+
+ <input type="submit" name="Submit" value="승인 요청"></p>
+
+ </form>
+ </body>
+</html> 
