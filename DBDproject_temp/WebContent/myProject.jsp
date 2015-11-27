@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>프로젝트 평가</title>
-</head>
-<body>
-
- <form name="form1" method="post" action="mypage.jsp">
+<title>내 프로젝트 조회</title>
+ </head>
+ <body>
+ 
+  <form name="form1" method="post" action="mypage.jsp">
  <input type="submit" name="Submit" value="내정보 조회"></form>
  
  <form name="form2" method="post" action="mypageEdit.jsp">
@@ -20,15 +21,17 @@
  
  <form name="form4" method="post" action="projectEval.jsp">
  <input type="submit" name="Submit" value="내 프로젝트 평가"></form>
-
-<table width="80%" border="1">
- <tr>
- <td>프로젝트 명</td>
- <td>직원이름</td>
- <td width="200">직무</td>
- </tr>
  
- <%
+ <table width="80%" border="1">
+ <tr>
+ <td>프로젝트 ID</td>
+ <td>프로젝트 이름</td>
+ <td width="200">직무 시작일자</td>
+ <td width="200">직무 종료일자</td>
+ <td width="200">PM</td>
+ <td width="200">평가점수</td>
+ </tr>
+<%
  Connection con = null;
  PreparedStatement pstmt = null;
  ResultSet rs = null; 
@@ -48,18 +51,19 @@
  rs = pstmt.executeQuery();
 
  while(rs.next()) {
- String pname = rs.getString("project_name");
- String name = rs.getString("worker_name");
- String duty = rs.getString("works_duty");
-
+ String id = rs.getString("project_id");
+ String name = rs.getString("project_name");
+ String start_date = rs.getString("project_start");
+ String finish_date = rs.getString("project_finish");
+ String owner = rs.getString("project_owner");
+ String describe = rs.getString("project_describe");
 %> 
 
 <tr>
- <td width="100"> <%=pname%> </td>
+ <td width="100"> <%=id%> </td>
  <td width="100"> <%=name%> </td>
- <td width="100"> <%=duty%> </td>
- 
-
+ <td width="100"> <%=start_date%> </td>
+ <td width="100"> <%=finish_date%> </td>
  </tr>
 <%
  }
@@ -72,5 +76,5 @@
  }
 %>
  </table>
-</body>
-</html>
+ </body>
+</html> 
