@@ -26,6 +26,7 @@
  <tr>
  <td>프로젝트 ID</td>
  <td>프로젝트 이름</td>
+  <td width="200">직무명</td>
  <td width="200">직무 시작일자</td>
  <td width="200">직무 종료일자</td>
  <td width="200">PM</td>
@@ -55,13 +56,13 @@
  String name = rs.getString("project_name");
  String start_date = rs.getString("project_start");
  String finish_date = rs.getString("project_finish");
- String owner = rs.getString("project_owner");
- String describe = rs.getString("project_describe");
+ String duty = rs.getString("works_duty");
 %> 
 
 <tr>
  <td width="100"> <%=id%> </td>
  <td width="100"> <%=name%> </td>
+  <td width="100"> <%=duty%> </td>
  <td width="100"> <%=start_date%> </td>
  <td width="100"> <%=finish_date%> </td>
  </tr>
