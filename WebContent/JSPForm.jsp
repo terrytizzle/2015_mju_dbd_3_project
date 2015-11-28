@@ -6,6 +6,7 @@
 	String errorMsg = null;
 
 	String actionUrl = "";
+		
 %>
 
 
@@ -29,12 +30,14 @@
 			<form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
 					<legend class="legend"> TITLE</legend>
-					<script type=text/javascript>
-						alert(" 로그아웃 하였습니다.");
-					<%session.invalidate();%>
-						window.location.replace("main.jsp");
-					</script>
-
+					
+					
+					
+					
+					
+					
+					
+					
 				</fieldset>
 			</form>
 		</div>

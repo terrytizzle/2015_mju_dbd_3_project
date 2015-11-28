@@ -4,7 +4,7 @@
 <%
 
 String[][] menu = {
-{"../main.jsp", "home" }
+{"main.jsp", "home" }
 };
 String currentMenu = request.getParameter("current");
 
@@ -48,7 +48,7 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 	<div class="container-fluid">
 		
 		<div class="navbar-header">
-			<a class="navbar-brand" href="http://localhost:8080/DBDproject_temp/main.jsp">MJS</a>
+			<a class="navbar-brand" href="http://localhost:8080/2015_mju_dbd_3_project/main.jsp">MJS</a>
 		</div>
 		<div class="collapse navbar-collapse" >
 			<ul class="nav navbar-nav">
@@ -68,8 +68,8 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 			<%
 					if (session.getAttribute("userId") == null) {
 				%>
-			<LI><A href="./worker/signup.jsp" style="margin-left:150px;" >Sign up</A>
-			<a href="http://localhost:8080/DBDproject_temp/login.jsp" style="margin-left:10px;">Login</A></LI>
+			<LI><A href="http://localhost:8080/2015_mju_dbd_3_project/worker/workerCreation.jsp" style="margin-left:150px;" >Sign up</A>
+			<a href="http://localhost:8080/2015_mju_dbd_3_project/login.jsp" style="margin-left:10px;">Login</A></LI>
 			<%
 					} else {
 			%>
