@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
-
 <%
 	String errorMsg = null;
 
 	String actionUrl;
-	// DB Á¢¼ÓÀ» À§ÇÑ ÁØºñ
+	// DB ì ‘ì†ì„ ìœ„í•œ ì¤€ë¹„
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -15,20 +13,19 @@
 	String dbUser = "root";
 	String dbPassword = "admin";
 
-	// »ç¿ëÀÚ Á¤º¸¸¦ À§ÇÑ º¯¼ö ÃÊ±âÈ­
+	// ì‚¬ìš©ì ì •ë³´ë¥¼ ìœ„í•œ ë³€ìˆ˜ ì´ˆê¸°í™”
 	String user_id = "";
 	String user_name = "";
 	String user_pswd = "";
 	String user_birth = "";
 	String user_dept = "";
 	String user_salary = "";
-	String user_enterance = "";
+	String user_entrance = "";
 	String user_terminate = "";
 	String user_email = "";
 	String user_final_edu = "";
-	String user_pos_name = "";
 
-	// Request·Î ID°¡ ÀÖ´ÂÁö È®ÀÎ
+	// Requestë¡œ IDê°€ ìˆëŠ”ì§€ í™•ì¸
 	int id = 0;
 	try {
 		id = Integer.parseInt(request.getParameter("userId"));
@@ -36,20 +33,20 @@
 	}
 
 	if (id > 0) {
-		// Request¿¡ id°¡ ÀÖÀ¸¸é update¸ğµå¶ó °¡Á¤
+		// Requestì— idê°€ ìˆìœ¼ë©´ updateëª¨ë“œë¼ ê°€ì •
 		actionUrl = "workerUpdate.jsp";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			// DB Á¢¼Ó
+			// DB ì ‘ì†
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 
-			// ÁúÀÇ ÁØºñ
+			// ì§ˆì˜ ì¤€ë¹„
 			stmt = conn.prepareStatement("SELECT * FROM worker WHERE worker_id = ?");
 			stmt.setInt(1, id);
 
-			// ¼öÇà
+			// ìˆ˜í–‰
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
@@ -59,17 +56,17 @@
 				user_birth = rs.getString("worker_birth");
 				user_dept = rs.getString("worker_dept");
 				user_salary = rs.getString("worker_salary");
-				user_enterance = rs.getString("worker_entrance");
+				user_entrance = rs.getString("worker_entrance");
 				user_terminate = rs.getString("worker_terminate");
 				user_email = rs.getString("worker_email");
 				user_final_edu = rs.getString("worker_final_edu");
-				user_pos_name = rs.getString("pos_name");
+				
 
 			}
 		} catch (SQLException e) {
-			errorMsg = "SQL ¿¡·¯: " + e.getMessage();
+			errorMsg = "SQL ì—ëŸ¬: " + e.getMessage();
 		} finally {
-			// ¹«½¼ ÀÏÀÌ ÀÖ¾îµµ ¸®¼Ò½º¸¦ Á¦´ë·Î Á¾·á
+			// ë¬´ìŠ¨ ì¼ì´ ìˆì–´ë„ ë¦¬ì†ŒìŠ¤ë¥¼ ì œëŒ€ë¡œ ì¢…ë£Œ
 			if (rs != null)
 				try {
 					rs.close();
@@ -125,12 +122,12 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="name">Name</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" placeholder="È«±æµ¿"
+							<input type="text" class="form-control" placeholder="í™ê¸¸ë™"
 								name="name" value="<%=user_name%>">
 						</div>
 					</div>
 
-					<%-- ½Å±Ô °¡ÀÔÀÏ ¶§¸¸ ºñ¹Ğ¹øÈ£ ÀÔ·ÂÃ¢À» ³ªÅ¸³¿ --%>
+					<%-- ì‹ ê·œ ê°€ì…ì¼ ë•Œë§Œ ë¹„ë°€ë²ˆí˜¸ ì…ë ¥ì°½ì„ ë‚˜íƒ€ëƒ„ --%>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="pwd">Password</label>
 						<div class="col-sm-3">
@@ -173,10 +170,10 @@
 
 
 					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="enterance">Enterance</label>
+						<label class="col-sm-2 control-label" for="entrance">Entrance</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="enterance"
-								value="<%=user_enterance%>">
+							<input type="text" class="form-control" name="entrance"
+								value="<%=user_entrance%>">
 						</div>
 					</div>
 
@@ -206,17 +203,6 @@
 								value="<%=user_final_edu%>">
 						</div>
 					</div>
-
-
-					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="pos_name">Position
-							Name</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="pos_name"
-								value="<%=user_pos_name%>">
-						</div>
-					</div>
-
 
 					<div class="form-group">
 						<input type=button value="Cancel"

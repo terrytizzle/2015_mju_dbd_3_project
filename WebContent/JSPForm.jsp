@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
 
 <%
@@ -30,14 +29,14 @@
 			<form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
 					<legend class="legend"> TITLE</legend>
-					
-					
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
+
+
 				</fieldset>
 			</form>
 		</div>

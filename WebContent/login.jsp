@@ -56,8 +56,8 @@
 				String user_birth = rs.getString("worker_birth");
 				String user_dept = rs.getString("worker_dept");
 				String user_salary = rs.getString("worker_salary");
-				String user_enterance = rs.getString("worker_enterance");
-				String user_terminate = rs.getString("worker_ternimate");
+				String user_entrance = rs.getString("worker_entrance");
+				String user_terminate = rs.getString("worker_terminate");
 				String user_email = rs.getString("worker_email");
 				String user_final_edu = rs.getString("worker_final_edu");
 				String user_pos_name = rs.getString("pos_name");
@@ -79,7 +79,7 @@
 								session.setAttribute("userBirth", user_birth);
 								session.setAttribute("userDept", user_dept);
 								session.setAttribute("userSalary", user_name);
-								session.setAttribute("userEnterance", user_enterance);
+								session.setAttribute("userEntrance", user_entrance);
 								session.setAttribute("userTerminate", user_terminate);
 								session.setAttribute("userEmail", user_email);
 								session.setAttribute("userFinaledu", user_final_edu);

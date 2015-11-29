@@ -9,7 +9,7 @@
 </head>
 <body>
 		
-	<form name="form1" method="post" action="showWorker_search.jsp">
+	<form name="form1" method="post" action="showWorker.jsp">
 		<p>
 			직원검색 <input type="text" name="workerInfo" size=30> <input
 				type="submit" name="Submit" value="조회하기">
@@ -70,8 +70,8 @@
 					String birth = rs.getString("worker_birth");
 					String dept = rs.getString("worker_dept");
 					String salary = rs.getString("worker_salary");
-					String enterance = rs.getString("worker_enterance");
-					String terminate = rs.getString("worker_ternimate");
+					String entrance = rs.getString("worker_entrance");
+					String terminate = rs.getString("worker_terminate");
 					String email = rs.getString("worker_email");
 					String final_edu = rs.getString("worker_final_edu");
 					String p_name = rs.getString("pos_name");
@@ -85,7 +85,7 @@
 			<td width="100"><%=birth%></td>
 			<td width="100"><%=dept%></td>
 			<td width="100"><%=salary%></td>
-			<td width="100"><%=enterance%></td>
+			<td width="100"><%=entrance%></td>
 			<td width="100"><%=terminate%></td>
 			<td width="100"><%=email%></td>
 			<td width="100"><%=final_edu%></td>
