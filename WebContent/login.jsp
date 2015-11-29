@@ -1,5 +1,3 @@
-<!-- 완성본은 아니지만 DB와 연동해서 로그인 하는 기능을 구현해본 페이지입니다.
-이후 수정이 될 예정임 -->
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" buffer="8kb"%>
 <%@ page import="java.sql.*"%>
 
@@ -67,7 +65,7 @@
 							if (id == null || pwd == null || id.length() == 0 || pwd.length() == 0) {
 			%>
 			<div class="error">
-				<div>
+				<p> 아이디 비밀번호를 입력해주세요</p>
 					<%
 						} else if (id.equals(user_id) && pwd.equals(user_pwd)) {
 										//로그인 성공
@@ -83,10 +81,10 @@
 										session.setAttribute("userFinaledu", user_final_edu);
 										session.setAttribute("userPosname", user_pos_name);
 
-										response.sendRedirect("ex2.jsp");
-									} else {
+										response.sendRedirect("first_page.jsp");
+						} else {
 					%>
-					<div class="error">아이디나 비밀번호가 잘못되었습니다.</div>
+					<p>아이디나 비밀번호가 잘못되었습니다.</p>
 					<%
 						}
 								}
@@ -108,6 +106,7 @@
 							}
 						}
 					%>
+					</div>
 					<form method="post">
 						ID: <input type="text" name="id"> 
 						password: <input type="password" name="pwd"> 

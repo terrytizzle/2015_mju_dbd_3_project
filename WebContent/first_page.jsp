@@ -50,7 +50,8 @@
 					<br> 직원최종학력 :	<%=session.getAttribute("userFinaledu")%><br> 
 					<br> 직급 : <%=session.getAttribute("userPosname")%><br>
 					       
-					<a href="logout.jsp">로그아웃</a> <a href="main.jsp">메인으로</a>
+					<a href="main.jsp">메인으로</a></br></br>
+					<a href="logout.jsp">로그아웃</a>
 					<%
 		}
 	%>

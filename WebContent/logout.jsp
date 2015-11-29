@@ -31,7 +31,7 @@
 					<script type=text/javascript>
 						alert(" 로그아웃 하였습니다.");
 					<%session.invalidate();%>
-						window.location.replace("main.jsp");
+						window.location.replace("first_page.jsp");
 					</script>
 
 				</fieldset>
