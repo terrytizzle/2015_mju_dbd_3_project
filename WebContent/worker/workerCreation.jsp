@@ -107,27 +107,33 @@
 
 	<div class="container">
 		<div>
-			<form class="form-horizontal" action="<%=actionUrl%>" method="post">
+		  <form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
 					<legend class="legend">Sign Up</legend>
 
+					<%
+			  	if (id > 0) {
+			  		out.println("<input type='hidden' name='id' value='"+id+"'>");
+			  	}
+			  	%>
+			  	<%if(id<=0){ %>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="id">ID</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="id"
-								value="<%=user_id%>">
+							<input type="text" class="form-control" name="id" value="<%=user_id%>">
 						</div>
 					</div>
-
+				<%} %>	
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="name">Name</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" placeholder="홍길동"
-								name="name" value="<%=user_name%>">
+							<input type="text" class="form-control" placeholder="홍길동" name="name" value="<%=user_name%>">
 						</div>
 					</div>
 
+
 					<%-- 신규 가입일 때만 비밀번호 입력창을 나타냄 --%>
+					<% if(id<=0){ %>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="pwd">Password</label>
 						<div class="col-sm-3">
@@ -136,26 +142,24 @@
 					</div>
 
 					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="pwd_confirm">Password
-							Confirmation</label>
+						<label class="col-sm-2 control-label" for="pwd_confirm">Password Confirmation</label>
 						<div class="col-sm-3">
 							<input type="password" class="form-control" name="pwd_confirm">
 						</div>
 					</div>
 
+					<% } %>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="birth">Birth</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" placeholder="1990-10-09"
-								name="birth" value="<%=user_birth%>">
+							<input type="text" class="form-control" placeholder="1990-10-09" name="birth" value="<%=user_birth%>">
 						</div>
 					</div>
 
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="dept">Department</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="dept"
-								value="<%=user_dept%>">
+							<input type="text" class="form-control" name="dept" value="<%=user_dept%>">
 						</div>
 					</div>
 
@@ -163,8 +167,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="salary">Salary</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="salary"
-								value="<%=user_salary%>">
+							<input type="text" class="form-control" name="salary" value="<%=user_salary%>">
 						</div>
 					</div>
 
@@ -172,8 +175,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="entrance">Entrance</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="entrance"
-								value="<%=user_entrance%>">
+							<input type="text" class="form-control" name="entrance" value="<%=user_entrance%>">
 						</div>
 					</div>
 
@@ -181,8 +183,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="terminate">Terminate</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="terminate"
-								value="<%=user_terminate%>">
+							<input type="text" class="form-control" name="terminate" value="<%=user_terminate%>">
 						</div>
 					</div>
 
@@ -190,25 +191,24 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="email">E-mail</label>
 						<div class="col-sm-3">
-							<input type="email" class="form-control"
-								placeholder="WOW@blizzard.com" name="email"
-								value="<%=user_email%>">
+							<input type="email" class="form-control" placeholder="WOW@blizzard.com" name="email" value="<%=user_email%>">
 						</div>
 					</div>
 
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="final_edu">Final_Edu</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="final_edu"
-								value="<%=user_final_edu%>">
+							<input type="text" class="form-control" name="final_edu" value="<%=user_final_edu%>">
 						</div>
 					</div>
-
+					
 					<div class="form-group">
-						<input type=button value="Cancel"
-							OnClick="javascript:history.back(-1)"
-							class="col-sm-offset-2 btn btn-default"> <input
-							type="submit" class="btn btn-default btn-primary" value="Create">
+						<input type=button value="Cancel" OnClick="javascript:history.back(-1)" class="col-sm-offset-2 btn btn-default">
+						<% if (id <= 0) { %>
+						<input type="submit" class="btn btn-default btn-primary" value="add">
+						<% } else { %>
+						<input type="submit" class="btn btn-default btn-primary" value="Modify">
+						<% } %>
 					</div>
 				</fieldset>
 			</form>

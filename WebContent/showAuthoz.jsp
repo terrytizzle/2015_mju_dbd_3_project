@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,10 +10,10 @@
 <body>
 <table width="80%" border="1">
 		<tr>
-			<td>流盔锅龋</td>
-			<td>流盔捞抚</td>
-			<td width="200">鼻茄</td>
-			<td width="200">流鞭</td>
+			<td>歆侅洂氩堩樃</td>
+			<td>歆侅洂鞚措</td>
+			<td width="200">甓岉暅</td>
+			<td width="200">歆侁笁</td>
 		</tr>
 		<%
  Connection con = null;
@@ -31,7 +30,7 @@
 
  Class.forName("com.mysql.jdbc.Driver");
  con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
- String sql = "select * from worker natural join position"; //sql 角青备巩
+ String sql = "select * from worker natural join position"; //sql 鞁ろ枆甑
  pstmt = con.prepareStatement(sql);
  rs = pstmt.executeQuery();
 

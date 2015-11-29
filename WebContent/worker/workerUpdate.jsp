@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="java.sql.*" import="java.sql.*" import="java.util.*" %>
+
 <%
-	// DB ������ ���� �غ�
+	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -13,54 +13,72 @@
 	
 	request.setCharacterEncoding("utf-8");
 
-	// Request�� ID�� �ִ��� Ȯ��
+	// Request로 ID가 있는지 확인
 	int id = 0;
 	try {
 		id = Integer.parseInt(request.getParameter("id"));
 	} catch (Exception e) {}
-	String userid = request.getParameter("userid");
-	String name = request.getParameter("name");
-	String email = request.getParameter("email");
-	String phone = request.getParameter("phone");
+	String user_id = request.getParameter("id");
+	String user_name = request.getParameter("name");
+	String user_birth = request.getParameter("birth");
+	String user_dept = request.getParameter("dept");
+	String user_salary = request.getParameter("salary");
+	String user_entrance = request.getParameter("entrance");
+	String user_terminate = request.getParameter("terminate");
+	String user_email = request.getParameter("email");
+	String user_final_edu = request.getParameter("final_edu");
 	
 	List<String> errorMsgs = new ArrayList<String>();
 	int result = 0;
 	
-	if (userid == null || userid.trim().length() == 0) {
-		errorMsgs.add("ID�� �ݵ�� �Է����ּ���.");
-	}
-
-	
-	if (name == null || name.trim().length() == 0) {
-		errorMsgs.add("�̸��� �ݵ�� �Է����ּ���.");
-	}
-	
-	if (phone == null || name.trim().length() == 0 ) {
-		errorMsgs.add("��ȭ��ȣ�� �ݵ�� �Է����ּ���.");
+	if (user_name == null || user_name.trim().length() == 0) {
+		errorMsgs.add("이름를 반드시 입력해주세요.");
+	} else if (user_birth == null || user_birth.trim().length() == 0) {
+		errorMsgs.add("생일을 반드시 입력해주세요.");
+	} else if (user_dept == null || user_dept.trim().length() == 0) {
+		errorMsgs.add("부서를 반드시 입력해주세요.");
+	} else if (user_salary == null || user_salary.trim().length() == 0) {
+		errorMsgs.add("연봉을 반드시 입력해주세요.");
+	} else if (user_entrance == null || user_entrance.trim().length() == 0) {
+		errorMsgs.add("입사일자를 반드시 입력해주세요.");
+	} else if (user_email == null || user_email.trim().length() == 0) {
+		errorMsgs.add("메일 주소를 반드시 입력해주세요.");
+	} else if (user_final_edu == null || user_final_edu.trim().length() == 0) {
+		errorMsgs.add("최종 학력을 반드시 입력해주세요.");
 	}
 
 	if (errorMsgs.size() == 0) {
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-					"UPDATE users " +
-					"SET  userid=?, name=?, email=?, phone=? " +
-					"WHERE id=?"
+					"UPDATE worker " +
+					"SET worker_name=?" +
+					"WHERE worker_id=?"
 					);
-			stmt.setString(1,  userid);
-			stmt.setString(2,  name);
-			stmt.setString(3,  email);
-			stmt.setString(4,  phone);
-			stmt.setInt(5,  id);
+			stmt.setString(1, user_name);
+			stmt.setString(2, user_id);
+			/*
 			
+			, worker_birth=?, worker_dept=?, worker_salary=?, " +
+					"worker_entrance=?, worker_terminate=?, worker_email=?, worker_final_edu=? " +
+			
+			stmt.setString(2, user_birth);
+			stmt.setString(3, user_dept);
+			stmt.setInt(4, Integer.parseInt(user_salary));
+			stmt.setString(5, user_entrance);
+			stmt.setString(6, user_terminate);
+			stmt.setString(7, user_email);
+			stmt.setString(8, user_final_edu);
+			stmt.setInt(9, id);
+			*/
 			result = stmt.executeUpdate();
 			if (result != 1) {
-				errorMsgs.add("���濡 �����Ͽ����ϴ�.");
+				errorMsgs.add("변경에 실패하였습니다.");
 			}
 		} catch (SQLException e) {
-			errorMsgs.add("SQL ����: " + e.getMessage());
+			errorMsgs.add("SQL 에러: " + e.getMessage());
 		} finally {
-			// ���� ���� �־ ���ҽ��� ����� ����
+			// 무슨 일이 있어도 리소스를 제대로 종료
 			if (rs != null) try{rs.close();} catch(SQLException e) {}
 			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 			if (conn != null) try{conn.close();} catch(SQLException e) {}
@@ -69,23 +87,18 @@
 %>
 
 
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>main page</title>
-<link rel="stylesheet" type="text/css" href="./CSS/style.css" />
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/base.css" rel="stylesheet">
-<script src="js/jquery-1.8.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<link href="http://localhost:8080/2015_mju_dbd_3_project/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://localhost:8080/2015_mju_dbd_3_project/css/base.css" rel="stylesheet">
+<script src="http://localhost:8080/2015_mju_dbd_3_project/js/jquery-1.8.2.min.js"></script>
+<script src="http://localhost:8080/2015_mju_dbd_3_project/js/bootstrap.min.js"></script>
 </html>
 <body>
-	<jsp:include page="share/header.jsp">
+	<jsp:include page="../share/header.jsp">
 		<jsp:param name="current" value="home" />
 	</jsp:include>
 
@@ -100,14 +113,14 @@
 			</ul>
 		</div>
 		<div class="form-group">
-			<a onclick="history.back();" class="btn btn-default">�ڷ� ���ư���</a>
+			<a onclick="history.back();" class="btn btn-default">뒤로 돌아가기</a>
 		</div>
 		<% } else if (result == 1) { %>
 		<div class="alert alert-success">
-			<b><%= name %></b>�� ������ �����Ǿ����ϴ�.
+			<b><%= user_name %></b>님 정보가 수정되었습니다.
 		</div>
 		<div class="form-group">
-			<a href="index.jsp" class="btn btn-default">�������</a>
+			<a href="../main.jsp" class="btn btn-default">목록으로</a>
 		</div>
 		<%}%>
 	</div>

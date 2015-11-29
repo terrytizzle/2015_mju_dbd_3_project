@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 
 <%
@@ -30,7 +29,7 @@
 				<fieldset>
 					<legend class="legend"> TITLE</legend>
 					<script type=text/javascript>
-						alert(" ·Î±×¾Æ¿ô ÇÏ¿´½À´Ï´Ù.");
+						alert(" ë¡œê·¸ì•„ì›ƒ í•˜ì˜€ìŠµë‹ˆë‹¤.");
 					<%session.invalidate();%>
 						window.location.replace("main.jsp");
 					</script>

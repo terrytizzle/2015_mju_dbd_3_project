@@ -1,7 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
-    
+
+<%
+	String errorMsg = null;
+
+	String actionUrl = "";
+		
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,50 +30,50 @@
 
  Class.forName("com.mysql.jdbc.Driver");
  con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
- String sql = "select * from worker natural join position"; //sql ½ÇÇà±¸¹®
+ String sql = "select * from worker natural join position"; //sql ì‹¤í–‰êµ¬ë¬¸
  pstmt = con.prepareStatement(sql);
  rs = pstmt.executeQuery();
 
  while(rs.next()) {
  String id = rs.getString("worker_id");
 %>
-	<p>½ÅÀÔ/°æ·Â Á÷¿ø Á¤º¸ °ü¸®</p>
+	<p>ì‹ ìž…/ê²½ë ¥ ì§ì› ì •ë³´ ê´€ë¦¬</p>
 	<form name="form1" method="post" action="loginTest.jsp">
 	<p>
-			Á÷¿øID : <%=id%>
+			ì§ì›ID : <%=id%>
 		</p>
 		<p>
-			Á÷¿øÀÌ¸§ : <input type="text" name="id">
+			ì§ì›ì´ë¦„ : <input type="text" name="id">
 		</p>
 		<p>
-			Á÷¿øpw : <input type="password" name="passwd">
+			ì§ì›pw : <input type="password" name="passwd">
 		</p>
 		<p>
-			»ýÀÏ : <input type="text" name="birth">
+			ìƒì¼ : <input type="text" name="birth">
 		</p>
 		<p>
-			ºÎ¼­ : <input type="text" name="dept">
+			ë¶€ì„œ : <input type="text" name="dept">
 		</p>
 		<p>
-			¿¬ºÀ : <input type="text" name="salary">
+			ì—°ë´‰ : <input type="text" name="salary">
 		</p>
 		<p>
-			ÀÔ»çÀÏ : <input type="text" name="entrance">
+			ìž…ì‚¬ì¼ : <input type="text" name="entrance">
 		</p>
 		<p>
-			Åð»çÀÏ : <input type="text" name="terminate">
+			í‡´ì‚¬ì¼ : <input type="text" name="terminate">
 		</p>
 		<p>
-			ÀÌ¸ÞÀÏ : <input type="text" name="email">
+			ì´ë©”ì¼ : <input type="text" name="email">
 		</p>
 		<p>
-			ÃÖÁ¾ÇÐ·Â : <input type="text" name="final_edu">
+			ìµœì¢…í•™ë ¥ : <input type="text" name="final_edu">
 		</p>
 		<p>
-			Á÷±Þ¸í : <input type="text" name="pos_name">
+			ì§ê¸‰ëª… : <input type="text" name="pos_name">
 		</p>
 		<p>
-			<input type="submit" name="Submit" value="Á÷¿ø »ý¼º">
+			<input type="submit" name="Submit" value="ì§ì› ìƒì„±">
 		</p>
 	</form>
 	

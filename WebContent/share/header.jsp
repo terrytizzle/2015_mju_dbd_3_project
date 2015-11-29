@@ -4,7 +4,8 @@
 <%
 
 String[][] menu = {
-{"main.jsp", "home" }
+{"http://localhost:8080/2015_mju_dbd_3_project/main.jsp", "home" },
+{"http://localhost:8080/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" }
 };
 String currentMenu = request.getParameter("current");
 
@@ -23,7 +24,7 @@ try {
 	Class.forName("com.mysql.jdbc.Driver");
 
 	conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-	stmt = conn.prepareStatement("SELECT * FROM worker");		
+	stmt = conn.prepareStatement("SELECT * FROM worker");
 	rs = stmt.executeQuery();
 
 	while(rs.next()) {

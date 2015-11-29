@@ -100,10 +100,15 @@ INSERT INTO evaluation (`eval_work`, `eval_communication`, `eval_score`) VALUES 
 INSERT INTO evaluation (`eval_work`, `eval_communication`, `eval_score`) VALUES ('5', '5', '10');
 
 
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('10000000', '홍길동', '10000000', '1960.01.01', '경영', '1000', '1988.01.01', 'aaa@aa.aa', '고등학교 졸업', '사장');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('20000000', '최이사', '20000000', '1992-12-31', '경영', '900', '2015-03-02', 'bbb@bb.bb', '대학교 졸업', '이사');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('30000000', '이부장', '30000000', '1992-12-31', '인사', '650', '2015-03-02', 'ccc@cc.cc', '대학교 졸업', '부장');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('40000000', '김차장', '40000000', '1992-12-31', 'PM', '550', '2015-03-02', 'ddd@dd.dd', '대학교 졸업', '차장');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('50000000', '박과장', '50000000', '1992-12-31', 'PM', '450', '2015-03-02', 'eee@ee.ee', '대학교 졸업', '과장');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60000000', '조대리', '60000000', '1992-12-31', '개발', '350', '2015-03-02', 'fff@ff.ff', '대학교 졸업', '대리');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('70000000', '윤사원', '70000000', '1992-12-31', '개발', '250', '2015-03-02', 'ggg@gg.gg', '대학교 졸업', '사원');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60112319', '김도형', '60112319', '1993.01.10', '개발', '250', '2015.03.02', 'kdh7785@naver.com', '대학교 재학', '사원');
-INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('20000000', '홍길동', '20000000', '1960.01.01', '경영', '1000', '1988.01.01', 'aaa@aa.aa', '고등학교 졸업', '사장');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60112380', '우희태', '60112380', '1992-12-31', '개발', '250', '2015-03-02', 'bbb@bb.bb', '대학교 재학', '사원');
-
 
 INSERT INTO works_for (`works_name`, `works_start`, `works_finish`, `works_duty`, `project_id`, `worker_id`) VALUES ('개발자', '2016-01-07', '2016-03-31', '인터페이스 구현', '1', '60112319');
 INSERT INTO works_for (`works_name`, `works_start`, `works_finish`, `works_duty`, `project_id`, `worker_id`) VALUES ('분석자', '2015-11-04', '2015-11-11', '디자인 분', '2', '60112319');

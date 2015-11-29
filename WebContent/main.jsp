@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 
 <%
@@ -29,11 +28,11 @@
 					<legend class="legend"> TITLE</legend>
 					<div id="warp">
 						<div id="top">
-							<p>х╞©╣гу╢о╢ы. 000╢т</p>
+							<p>М≥≤Л≤│М∙╘К▀┬К▀╓. 000К▀≤</p>
 						</div id="logo">
 						<div>
 							<fieldset>
-								<h1>юн╩Г╟Э╦╝╫ц╫╨еш</h1>
+								<h1>Л²╦Л┌╛Й╢─К╕╛Л▀°Л┼╓М┘°</h1>
 							</fieldset>
 						</div>
 						<div id="middle">
