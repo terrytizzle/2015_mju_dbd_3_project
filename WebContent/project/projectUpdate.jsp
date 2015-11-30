@@ -18,59 +18,43 @@
 	try {
 		id = Integer.parseInt(request.getParameter("id"));
 	} catch (Exception e) {}
-	String user_id = request.getParameter("id");
-	String user_name = request.getParameter("name");
-	String user_birth = request.getParameter("birth");
-	String user_dept = request.getParameter("dept");
-	String user_salary = request.getParameter("salary");
-	String user_entrance = request.getParameter("entrance");
-	String user_terminate = request.getParameter("terminate");
-	String user_email = request.getParameter("email");
-	String user_final_edu = request.getParameter("final_edu");
+	String proj_id = request.getParameter("id");
+	String proj_name = request.getParameter("name");
+/*	String user_id = request.getParameter("PMId");
+	String user_name = request.getParameter("PMName");*/
+	String proj_start = request.getParameter("start");
+	String proj_finish = request.getParameter("finish");
+	String proj_owner = request.getParameter("pro_owner");
+	String proj_describe = request.getParameter("describe");
 	
 	List<String> errorMsgs = new ArrayList<String>();
 	int result = 0;
 	
-	if (user_name == null || user_name.trim().length() == 0) {
-		errorMsgs.add("이름를 반드시 입력해주세요.");
-	} else if (user_birth == null || user_birth.trim().length() == 0) {
-		errorMsgs.add("생일을 반드시 입력해주세요.");
-	} else if (user_dept == null || user_dept.trim().length() == 0) {
+	if (proj_name == null || proj_name.trim().length() == 0) {
+		errorMsgs.add("프로젝트명을 반드시 입력해주세요.");
+/*	} else if (user_id == null || user_id.trim().length() == 0) {
 		errorMsgs.add("부서를 반드시 입력해주세요.");
-	} else if (user_salary == null || user_salary.trim().length() == 0) {
-		errorMsgs.add("연봉을 반드시 입력해주세요.");
-	} else if (user_entrance == null || user_entrance.trim().length() == 0) {
-		errorMsgs.add("입사일자를 반드시 입력해주세요.");
-	} else if (user_email == null || user_email.trim().length() == 0) {
-		errorMsgs.add("메일 주소를 반드시 입력해주세요.");
-	} else if (user_final_edu == null || user_final_edu.trim().length() == 0) {
-		errorMsgs.add("최종 학력을 반드시 입력해주세요.");
+	} else if (user_name == null || user_name.trim().length() == 0) { 
+		errorMsgs.add("연봉을 반드시 입력해주세요."); */
+	} else if (proj_start == null || proj_start.trim().length() == 0) {
+		errorMsgs.add("프로젝트 시작일자를 반드시 입력해주세요.");
+	} else if (proj_finish == null || proj_finish.trim().length() == 0) {
+		errorMsgs.add("프로젝트 종료일자를 반드시 입력해주세요.");
+	} else if (proj_owner == null || proj_owner.trim().length() == 0) {
+		errorMsgs.add("발주처를 반드시 입력해주세요.");
 	}
 
 	if (errorMsgs.size() == 0) {
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-					"UPDATE worker " +
-					"SET worker_name=?" +
-					"WHERE worker_id=?"
+					"UPDATE project " +
+					"SET project_name=?" +
+					"WHERE project_id=?"
 					);
-			stmt.setString(1, user_name);
-			stmt.setString(2, user_id);
-			/*
+			stmt.setString(1, proj_name);
+			stmt.setString(2, proj_id);
 			
-			, worker_birth=?, worker_dept=?, worker_salary=?, " +
-					"worker_entrance=?, worker_terminate=?, worker_email=?, worker_final_edu=? " +
-			
-			stmt.setString(2, user_birth);
-			stmt.setString(3, user_dept);
-			stmt.setInt(4, Integer.parseInt(user_salary));
-			stmt.setString(5, user_entrance);
-			stmt.setString(6, user_terminate);
-			stmt.setString(7, user_email);
-			stmt.setString(8, user_final_edu);
-			stmt.setInt(9, id);
-			*/
 			result = stmt.executeUpdate();
 			if (result != 1) {
 				errorMsgs.add("변경에 실패하였습니다.");
@@ -117,7 +101,7 @@
 		</div>
 		<% } else if (result == 1) { %>
 		<div class="alert alert-success">
-			<b><%= user_name %></b>님 정보가 수정되었습니다.
+			<b><%= proj_name %></b>의 정보가 수정되었습니다.
 		</div>
 		<div class="form-group">
 			<a href="../main.jsp" class="btn btn-default">목록으로</a>

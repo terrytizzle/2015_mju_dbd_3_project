@@ -79,8 +79,7 @@
 								if (request.getMethod() == "POST") {
 									String workerInfo = request.getParameter("workerInfo");
 
-									String sql = "select * from worker where worker_id= '" + workerInfo + "' or worker_name= '"
-											+ workerInfo + "'";
+									String sql = "select * from worker where worker_id= '" + workerInfo + "' or worker_name= '" + workerInfo + "'";
 
 									if (workerInfo.isEmpty()) {
 										sql = "SELECT * FROM worker ORDER BY worker_id LIMIT " + startPos + ", " + numInPage;

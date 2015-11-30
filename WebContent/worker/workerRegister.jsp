@@ -13,6 +13,8 @@
 	
 	request.setCharacterEncoding("utf-8");
 	
+	
+	
 	String user_id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
 	String pwd_confirm = request.getParameter("pwd_confirm");

@@ -15,30 +15,30 @@
 <title>Worker Management</title>
 </head>
 <body>
-		<%
- Connection con = null;
- PreparedStatement pstmt = null;
- ResultSet rs = null; 
-
- try {
- String DB_SERVER = "localhost:3306";
- String DB_SERVER_USERNAME = "root";
- String DB_SERVER_PASSWORD = "admin";
- String DB_DATABASE = "mjsolution";	
-
- String JDBC_URL = "jdbc:mysql://" + DB_SERVER + "/" + DB_DATABASE;
-
- Class.forName("com.mysql.jdbc.Driver");
- con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
- String sql = "select * from worker natural join position"; //sql 실행구문
- pstmt = con.prepareStatement(sql);
- rs = pstmt.executeQuery();
-
- while(rs.next()) {
- String id = rs.getString("worker_id");
+<%
+	 Connection con = null;
+	 PreparedStatement pstmt = null;
+	 ResultSet rs = null; 
+	
+	 try {
+	 String DB_SERVER = "localhost:3306";
+	 String DB_SERVER_USERNAME = "root";
+	 String DB_SERVER_PASSWORD = "admin";
+	 String DB_DATABASE = "mjsolution";	
+	
+	 String JDBC_URL = "jdbc:mysql://" + DB_SERVER + "/" + DB_DATABASE;
+	
+	 Class.forName("com.mysql.jdbc.Driver");
+	 con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
+	 String sql = "select * from project natural join worker"; //sql 실행구문
+	 pstmt = con.prepareStatement(sql);
+	 rs = pstmt.executeQuery();
+	
+	 while(rs.next()) {
+	 String id = rs.getString("project_id");
 %>
-	<p>신입/경력 직원 정보 관리</p>
-	<form name="form1" method="post" action="loginTest.jsp">
+	<p>프로젝트 관리</p>
+	<form name="form1" method="post" action="projectManagement.jsp">
 	<p>
 			직원ID : <%=id%>
 		</p>

@@ -14,15 +14,15 @@
 	String dbUser = "root";
 	String dbPassword = "admin";
 
-	// 사용자 정보를 위한 변수 초기화
-	String project_id = "";
-	String project_name = "";
-	String worker_id = "";
-	String worker_name = "";
-	String project_start = "";
-	String project_finish = "";
-	String project_owner = "";
-	String project_describe = "";
+	// 프로젝트 정보를 위한 변수 초기화
+	String proj_id = "";
+	String proj_name = "";
+	String user_id = "";
+	String user_name = "";
+	String proj_start = "";
+	String proj_finish = "";
+	String proj_owner = "";
+	String proj_describe = "";
 
 	// Request로 ID가 있는지 확인
 	int id = 0;
@@ -49,14 +49,14 @@
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				project_id = rs.getString("project_id");
-				project_name = rs.getString("project_name");
-				worker_id = rs.getString("worker_id");
-				worker_name = rs.getString("worker_name");
-				project_start = rs.getString("project_start");
-				project_finish = rs.getString("project_finish");
-				project_owner = rs.getString("project_owner");
-				project_describe = rs.getString("project_describe");
+				proj_id = rs.getString("project_id");
+				proj_name = rs.getString("project_name");
+				user_id = rs.getString("worker_id");
+				user_name = rs.getString("worker_name");
+				proj_start = rs.getString("project_start");
+				proj_finish = rs.getString("project_finish");
+				proj_owner = rs.getString("project_owner");
+				proj_describe = rs.getString("project_describe");
 
 			}
 		} catch (SQLException e) {
@@ -67,17 +67,17 @@
 				try {
 					rs.close();
 				} catch (SQLException e) {
-				}
+			}
 			if (stmt != null)
 				try {
 					stmt.close();
 				} catch (SQLException e) {
-				}
+			}
 			if (conn != null)
 				try {
 					conn.close();
 				} catch (SQLException e) {
-				}
+			}
 		}
 	} else {
 		actionUrl = "projectRegister.jsp";
@@ -104,55 +104,62 @@
 		<div>
 		  <form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
-					<legend class="legend">make project</legend>
+					<legend class="legend">Make project</legend>
 
-				
+					<%
+					  	if (id > 0) {
+					  		out.println("<input type='hidden' name='id' value='"+id+"'>");
+					  	}
+				  	%>
+				  	<%if(id<=0){ %>
 			  		<div class="form-group ">
 						<label class="col-sm-2 control-label" for="id">프로젝트 ID</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="id" value="<%=project_id%>">
+							<input type="text" class="form-control" name="id" value="<%=proj_id%>">
 						</div>
 					</div>
+					<%} %>	
 					
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="name">프로젝트명</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" placeholder="A프로젝트" name="name" value="<%=project_name%>">
+							<input type="text" class="form-control" placeholder="A프로젝트" name="name" value="<%=proj_name%>">
 						</div>
 					</div>
+					
 					
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="PMId">PM id</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="PMId" value="<%=worker_id%>">
+							<input type="text" class="form-control" name="PMId" value="<%=user_id%>">
 						</div>
 					</div>
 
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="PMName">PM명</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="PMName" value="<%=worker_name%>">
+							<input type="text" class="form-control" name="PMName" value="<%=user_name%>">
 						</div>
 					</div>
-
+	
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="start">시작일</label>
 						<div class="col-sm-3">
-							<input type="datetime" class="form-control" name="start" value="<%=project_start%>">
+							<input type="datetime" class="form-control" name="start" value="<%=proj_start%>">
 						</div>
 					</div>
 
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="finish">종료일</label>
 						<div class="col-sm-3">
-							<input type="datetime" class="form-control" name="start" value="<%=project_finish%>">
+							<input type="datetime" class="form-control" name="start" value="<%=proj_finish%>">
 						</div>
 					</div>
 
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="pro_owner">발주처</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="pro_owner" value="<%=project_owner%>">
+							<input type="text" class="form-control" name="pro_owner" value="<%=proj_owner%>">
 						</div>
 					</div>
 
@@ -160,10 +167,11 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="describe">설명</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="describe" value="<%=project_describe%>">
+							<input type="text" class="form-control" name="describe" value="<%=proj_describe%>">
 						</div>
 					</div>
-	
+					
+					
 					<div class="form-group">
 						<input type=button value="Cancel" OnClick="javascript:history.back(-1)" class="col-sm-offset-2 btn btn-default">
 						<% if (id <= 0) { %>

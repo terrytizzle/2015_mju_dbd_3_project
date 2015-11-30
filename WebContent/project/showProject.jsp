@@ -48,15 +48,18 @@
  			<table class="table table-bordered table-stripped">
 				<thead>
 				 <tr>
-					 <td>프로젝트 ID</td>
-					 <td>프로젝트 이름</td>
-					 <td>시작일자</td>
-					 <td>종료일자</td>
-					 <td>발주처</td>
-					 <td>프로젝트 설명</td>
+					 <th>프로젝트 ID</th>
+					 <th>프로젝트 이름</th>
+					 <th>시작일자</th>
+					 <th>종료일자</th>
+					 <th>발주처</th>
+					 <th>프로젝트 설명</th>
+					 <th></th>
 				 </tr>
+				 </thead>
+				 
 				<%
-						 
+					request.setCharacterEncoding("utf-8");	 
 					Connection con = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null; 
@@ -80,6 +83,7 @@
 						if (projectInfo.isEmpty()) {
 							sql = "SELECT * FROM project ORDER BY project_id LIMIT " + startPos + ", " + numInPage;
 						}
+						
 						pstmt = con.prepareStatement(sql);
 						rs = pstmt.executeQuery();
 						String gender;
@@ -91,20 +95,28 @@
 						String finish_date = rs.getString("project_finish");
 						String owner = rs.getString("project_owner");
 						String describe = rs.getString("project_describe");
-				%> 
 				
-				<tr>
-				 <td> <%=id%> </td>
-				 <td> <%=name%> </td>
-				 <td> <%=start_date%> </td>
-				 <td> <%=finish_date%> </td>
-				 <td> <%=owner%> </td>
-				 <td> <%=describe%> </td>
-					<td>
-						<a href="makeProject.jsp?userId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
-						<a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("project_id")%>">delete</a></td>
-				</tr>
+						if (projectInfo.equals(id) || projectInfo.equals(name)) {
+				%> 
+				<tbody>
+					<tr>
+						<td> <%=id%> </td>
+						<td> <%=name%> </td>
+						<td> <%=start_date%> </td>
+						<td> <%=finish_date%> </td>
+						<td> <%=owner%> </td>
+						<td> <%=describe%> </td>
+						<td>
+							<a href="projectCreation.jsp?userId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
+							<a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("project_id")%>">delete</a></td>
+					</tr>
 				</tbody>
+				<%
+					}
+						}
+						if (!rs.first()) {
+				%>
+				<p>해당 프로젝트가 없습니다.</p>
 				<%
 						}
 					}
@@ -121,7 +133,7 @@
 			</form>
 		</div>
 		<div class="form-group">
-			<a href="workerCreation.jsp" class="btn btn-primary">Add Project</a>
+			<a href="projectCreation.jsp" class="btn btn-primary">Add Project</a>
 		</div>
 	</div>
 
