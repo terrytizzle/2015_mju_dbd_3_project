@@ -25,16 +25,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>직원정보 조회</title>
-<link href="http://localhost:8080/2015_mju_dbd_3_project/css/bootstrap.min.css" rel="stylesheet">
-<link href="http://localhost:8080/2015_mju_dbd_3_project/css/base.css" rel="stylesheet">
-<script src="http://localhost:8080/2015_mju_dbd_3_project/js/jquery-1.8.2.min.js"></script>
-<script src="http://localhost:8080/2015_mju_dbd_3_project/js/bootstrap.min.js"></script>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/base.css" rel="stylesheet">
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </html>
 <body>
 	<jsp:include page="../share/header.jsp">
-		<jsp:param name="current" value="home" />
+	<jsp:param name="current" value="home" /> 
 	</jsp:include>
-
+	
 	<div class="container">
 		<div>
 

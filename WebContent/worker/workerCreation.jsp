@@ -175,7 +175,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="entrance">Entrance</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="entrance" value="<%=user_entrance%>">
+							<input type="datetime" class="form-control" name="entrance" value="<%=user_entrance%>">
 						</div>
 					</div>
 
@@ -183,7 +183,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="terminate">Terminate</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="terminate" value="<%=user_terminate%>">
+							<input type="datetime" class="form-control" name="terminate" value="<%=user_terminate%>">
 						</div>
 					</div>
 

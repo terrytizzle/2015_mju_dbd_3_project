@@ -23,7 +23,7 @@
  try {
  String DB_SERVER = "localhost:3306";
  String DB_SERVER_USERNAME = "root";
- String DB_SERVER_PASSWORD = "delab";
+ String DB_SERVER_PASSWORD = "admin";
  String DB_DATABASE = "mjsolution";
 
  String JDBC_URL = "jdbc:mysql://" + DB_SERVER + "/" + DB_DATABASE;

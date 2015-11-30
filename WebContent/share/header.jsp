@@ -69,8 +69,8 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 			<%
 					if (session.getAttribute("userId") == null) {
 				%>
-			<LI><A href="http://localhost:8080/2015_mju_dbd_3_project/worker/workerCreation.jsp" style="margin-left:150px;" >Sign up</A>
-			<a href="http://localhost:8080/2015_mju_dbd_3_project/login.jsp" style="margin-left:10px;">Login</A></LI>
+			<LI><A href="../worker/workerCreation.jsp" style="margin-left:150px;" >Sign up</A>
+			<a href="../login.jsp" style="margin-left:10px;">Login</A></LI>
 			<%
 					} else {
 			%>
