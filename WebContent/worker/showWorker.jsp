@@ -116,8 +116,12 @@
 								<td><%=email%></td>
 								<td><%=final_edu%></td>
 								<td><%=p_name%></td>
+								
+								<%
+									if(session.getAttribute("userDept").equals("인사")){
+										if(session.getAttribute("userPosname").equals("부장")){ %>
 								<td><a href="workerCreation.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs">modify</a> <a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("worker_id")%>">delete</a></td>
-
+<%} }%>
 							</tr>
 						</tbody>
 						<%
@@ -159,9 +163,17 @@
 				</fieldset>
 			</form>
 		</div>
-		<div class="form-group">
-			<a href="workerCreation.jsp" class="btn btn-primary">Add Worker</a>
-		</div>
+		<%
+			if(session.getAttribute("userDept").equals("인사")){
+				if(session.getAttribute("userPosname").equals("부장")){ 
+		%>
+					<div class="form-group">
+						<a href="workerCreation.jsp" class="btn btn-primary">Add Worker</a>
+					</div>
+		<%
+				}
+			}
+		%>
 	</div>
 
 </body>
