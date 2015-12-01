@@ -49,7 +49,7 @@
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-					"INSERT INTO project(project_id, projecr_name, project_start, project_finish, project_owner, project_describe) " +
+					"INSERT INTO project(project_id, project_name, project_start, project_finish, project_owner, project_describe) " +
 					"VALUES(?, ?, ?, ?, ?, ?)"
 					);
 			stmt.setString(1, proj_id);

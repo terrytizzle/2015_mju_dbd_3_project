@@ -14,14 +14,12 @@
 	request.setCharacterEncoding("utf-8");
 
 	// Request로 ID가 있는지 확인
-	int id = 0;
+	int project = 0;
 	try {
-		id = Integer.parseInt(request.getParameter("id"));
+		project = Integer.parseInt(request.getParameter("project"));
 	} catch (Exception e) {}
 	String proj_id = request.getParameter("id");
 	String proj_name = request.getParameter("name");
-/*	String user_id = request.getParameter("PMId");
-	String user_name = request.getParameter("PMName");*/
 	String proj_start = request.getParameter("start");
 	String proj_finish = request.getParameter("finish");
 	String proj_owner = request.getParameter("pro_owner");
@@ -32,10 +30,6 @@
 	
 	if (proj_name == null || proj_name.trim().length() == 0) {
 		errorMsgs.add("프로젝트명을 반드시 입력해주세요.");
-/*	} else if (user_id == null || user_id.trim().length() == 0) {
-		errorMsgs.add("부서를 반드시 입력해주세요.");
-	} else if (user_name == null || user_name.trim().length() == 0) { 
-		errorMsgs.add("연봉을 반드시 입력해주세요."); */
 	} else if (proj_start == null || proj_start.trim().length() == 0) {
 		errorMsgs.add("프로젝트 시작일자를 반드시 입력해주세요.");
 	} else if (proj_finish == null || proj_finish.trim().length() == 0) {
@@ -49,11 +43,15 @@
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
 					"UPDATE project " +
-					"SET project_name=?" +
+					"SET project_name=?, project_start=?, project_finish=?, project_owner=?, project_describe=?" +
 					"WHERE project_id=?"
 					);
 			stmt.setString(1, proj_name);
-			stmt.setString(2, proj_id);
+			stmt.setString(2, proj_start);
+			stmt.setString(3, proj_finish);
+			stmt.setString(4, proj_owner);
+			stmt.setString(5, proj_describe);
+			stmt.setString(6, proj_id);
 			
 			result = stmt.executeUpdate();
 			if (result != 1) {
@@ -76,14 +74,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>main page</title>
-<link href="http://localhost:8080/2015_mju_dbd_3_project/css/bootstrap.min.css" rel="stylesheet">
-<link href="http://localhost:8080/2015_mju_dbd_3_project/css/base.css" rel="stylesheet">
-<script src="http://localhost:8080/2015_mju_dbd_3_project/js/jquery-1.8.2.min.js"></script>
-<script src="http://localhost:8080/2015_mju_dbd_3_project/js/bootstrap.min.js"></script>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/base.css" rel="stylesheet">
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </html>
 <body>
 	<jsp:include page="../share/header.jsp">
-		<jsp:param name="current" value="home" />
+	<jsp:param name="current" value="home" />
 	</jsp:include>
 
 	<div class="container">
@@ -104,12 +102,8 @@
 			<b><%= proj_name %></b>의 정보가 수정되었습니다.
 		</div>
 		<div class="form-group">
-			<a href="../main.jsp" class="btn btn-default">목록으로</a>
+			<a href="showProject.jsp" class="btn btn-default">목록으로</a>
 		</div>
 		<%}%>
 	</div>
-	
-
-
-
 </body>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
   
 <%
@@ -6,7 +6,7 @@
 
 	String actionUrl = "";
 
-	// фДюлаЖ ╪Ёа╓
+	// М▌≤Л²╢Л╖─ Л└╓Л═∙
 	int pageNo = 1;
 
 	try {
@@ -14,8 +14,8 @@
 	} catch (NumberFormatException ex) {
 	}
 
-	int numInPage = 10; // гяфДюлаЖ©║ цБ╥бгр ╬фюлеш ╟Ё╪Ж
-	int startPos = (pageNo - 1) * numInPage; // ╦Н ╧Ьб╟ ╬фюлеш ╨нем юл фДюлаЖ©║?
+	int numInPage = 10; // М∙°М▌≤Л²╢Л╖─Л≈░ Л╤°К═╔М∙═ Л∙└Л²╢М┘° Й╟°Л┬≤
+	int startPos = (pageNo - 1) * numInPage; // К╙┤ К╡┬Л╖╦ Л∙└Л²╢М┘° К╤─М└╟ Л²╢ М▌≤Л²╢Л╖─Л≈░?
 	int numItems, numPages;
 %>
     
@@ -23,7 +23,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>га╥на╖ф╝ а╤х╦</title>
+<title>М■└К║°Л═²М┼╦ Л║╟М ▄</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/base.css" rel="stylesheet">
 <script src="../js/jquery-1.8.2.min.js"></script>
@@ -40,20 +40,20 @@
 			
 			<form name="form1" method="post" action="showProject.jsp">
 				<fieldset>
-					<legend class="legend"> га╥на╖ф╝ ╟к╩Ж </legend>
+					<legend class="legend"> М■└К║°Л═²М┼╦ Й╡─Л┐┴ </legend>
 					<p>
-						<input type="text" name="projectInfo" size=30> <input type="submit" name="Submit" value="а╤х╦го╠Б">
+						<input type="text" name="projectInfo" size=30> <input type="submit" name="Submit" value="Л║╟М ▄М∙≤Й╦╟">
 					</p>
 		
  			<table class="table table-bordered table-stripped">
 				<thead>
 				 <tr>
-					 <th>га╥на╖ф╝ ID</th>
-					 <th>га╥на╖ф╝ юл╦╖</th>
-					 <th>╫цюшюоюз</th>
-					 <th>а╬╥Аюоюз</th>
-					 <th>╧ъажцЁ</th>
-					 <th>га╥на╖ф╝ ╪Ё╦М</th>
+					 <th>М■└К║°Л═²М┼╦ ID</th>
+					 <th>М■└К║°Л═²М┼╦ Л²╢К╕└</th>
+					 <th>Л▀°Л·▒Л²╪Л·░</th>
+					 <th>Л╒┘Кё▄Л²╪Л·░</th>
+					 <th>К╟°Лё╪Л╡≤</th>
+					 <th>М■└К║°Л═²М┼╦ Л└╓К╙┘</th>
 					 <th></th>
 				 </tr>
 				 </thead>
@@ -107,7 +107,7 @@
 						<td> <%=owner%> </td>
 						<td> <%=describe%> </td>
 						<td>
-							<a href="projectCreation.jsp?userId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
+							<a href="projectCreation.jsp?projectId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
 							<a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("project_id")%>">delete</a></td>
 					</tr>
 				</tbody>
@@ -116,7 +116,7 @@
 						}
 						if (!rs.first()) {
 				%>
-				<p>гь╢Г га╥на╖ф╝╟║ ╬Ь╫ю╢о╢ы.</p>
+				<p>М∙╢К▀╧ М■└К║°Л═²М┼╦Й╟─ Л≈├Л┼╣К▀┬К▀╓.</p>
 				<%
 						}
 					}
@@ -141,7 +141,7 @@
 <script>
 	$(function() {
 		$("a[data-action='delete']").click(function() {
-			if (confirm("а╓╦╩╥н ╩Ха╕го╫ц╟з╫ю╢о╠Н?")) {
+			if (confirm("Л═∙К╖░К║° Л┌╜Л═°М∙≤Л▀°Й╡═Л┼╣К▀┬Й╧▄?")) {
 				location = 'deleteProject.jsp?id=' + $(this).attr('data-id');
 			}
 			return false;

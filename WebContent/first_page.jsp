@@ -36,6 +36,20 @@
 						<a href="login.jsp">로그인</a>
 					</p>
 					<%
+						}else if (session.getAttribute("userId") == "empty") {
+							%>
+							<p>아이디와 비밀번호를 모두 입력해주세요.</p>
+							<p>
+								<a href="login.jsp">로그인</a>
+							</p>
+							<%
+						}else if (session.getAttribute("userId") == "wrong") {
+							%>
+							<p>아이디나 비밀번호가 잘못되었습니다.</p>
+							<p>
+								<a href="login.jsp">로그인</a>
+							</p>
+							<%
 						} else {
 					%>
 					<p>로그인 성공.</p>

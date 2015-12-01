@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
     
 <%	
@@ -14,7 +14,9 @@
 	String dbUser = "root";
 	String dbPassword = "admin";
 
-	// ÇÁ·ÎÁ§Æ® Á¤º¸¸¦ À§ÇÑ º¯¼ö ÃÊ±âÈ­
+	
+	
+	// í”„ë¡œì íŠ¸ ì •ë³´ë¥¼ ìœ„í•œ ë³€ìˆ˜ ì´ˆê¸°í™”
 	String proj_id = "";
 	String proj_name = "";
 	String user_id = "";
@@ -24,35 +26,33 @@
 	String proj_owner = "";
 	String proj_describe = "";
 
-	// Request·Î ID°¡ ÀÖ´ÂÁö È®ÀÎ
-	int id = 0;
+	// Requestë¡œ IDê°€ ìˆëŠ”ì§€ í™•ì¸
+	int project = 0;
 	try {
-		id = Integer.parseInt(request.getParameter("userId"));
+		project = Integer.parseInt(request.getParameter("projectId"));
 	} catch (Exception e) {
 	}
 
-	if (id > 0) {
-		// Request¿¡ id°¡ ÀÖÀ¸¸é update¸ğµå¶ó °¡Á¤
+	if (project > 0) {
+		// Requestì— idê°€ ìˆìœ¼ë©´ updateëª¨ë“œë¼ ê°€ì •
 		actionUrl = "projectUpdate.jsp";
-
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			// DB Á¢¼Ó
+			// DB ì ‘ì†
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 
-			// ÁúÀÇ ÁØºñ
+			// ì§ˆì˜ ì¤€ë¹„
 			stmt = conn.prepareStatement("SELECT * FROM project WHERE project_id = ?");
-			stmt.setInt(1, id);
+			stmt.setInt(1, project);
 
-			// ¼öÇà
+			// ìˆ˜í–‰
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
 				proj_id = rs.getString("project_id");
 				proj_name = rs.getString("project_name");
-				user_id = rs.getString("worker_id");
-				user_name = rs.getString("worker_name");
 				proj_start = rs.getString("project_start");
 				proj_finish = rs.getString("project_finish");
 				proj_owner = rs.getString("project_owner");
@@ -60,9 +60,9 @@
 
 			}
 		} catch (SQLException e) {
-			errorMsg = "SQL ¿¡·¯: " + e.getMessage();
+			errorMsg = "SQL ì—ëŸ¬: " + e.getMessage();
 		} finally {
-			// ¹«½¼ ÀÏÀÌ ÀÖ¾îµµ ¸®¼Ò½º¸¦ Á¦´ë·Î Á¾·á
+			// ë¬´ìŠ¨ ì¼ì´ ìˆì–´ë„ ë¦¬ì†ŒìŠ¤ë¥¼ ì œëŒ€ë¡œ ì¢…ë£Œ
 			if (rs != null)
 				try {
 					rs.close();
@@ -107,57 +107,42 @@
 					<legend class="legend">Make project</legend>
 
 					<%
-					  	if (id > 0) {
-					  		out.println("<input type='hidden' name='id' value='"+id+"'>");
+					  	if (project > 0) {
+					  		out.println("<input type='hidden' name='id' value='"+project+"'>");
 					  	}
 				  	%>
-				  	<%if(id<=0){ %>
+				  	<%if(project<=0){ %>
 			  		<div class="form-group ">
-						<label class="col-sm-2 control-label" for="id">ÇÁ·ÎÁ§Æ® ID</label>
+						<label class="col-sm-2 control-label" for="id">í”„ë¡œì íŠ¸ ID</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="id" value="<%=proj_id%>">
 						</div>
 					</div>
-					<%} %>	
+					<%}  %>	
 					
 					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="name">ÇÁ·ÎÁ§Æ®¸í</label>
+						<label class="col-sm-2 control-label" for="name">í”„ë¡œì íŠ¸ëª…</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" placeholder="AÇÁ·ÎÁ§Æ®" name="name" value="<%=proj_name%>">
+							<input type="text" class="form-control" placeholder="Aí”„ë¡œì íŠ¸" name="name" value="<%=proj_name%>">
 						</div>
 					</div>
 					
-					
 					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="PMId">PM id</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="PMId" value="<%=user_id%>">
-						</div>
-					</div>
-
-					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="PMName">PM¸í</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="PMName" value="<%=user_name%>">
-						</div>
-					</div>
-	
-					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="start">½ÃÀÛÀÏ</label>
+						<label class="col-sm-2 control-label" for="start">ì‹œì‘ì¼</label>
 						<div class="col-sm-3">
 							<input type="datetime" class="form-control" name="start" value="<%=proj_start%>">
 						</div>
 					</div>
 
-					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="finish">Á¾·áÀÏ</label>
+						<div class="form-group ">
+						<label class="col-sm-2 control-label" for="start">ì¢…ë£Œì¼</label>
 						<div class="col-sm-3">
-							<input type="datetime" class="form-control" name="start" value="<%=proj_finish%>">
+							<input type="datetime" class="form-control" name="finish" value="<%=proj_finish%>">
 						</div>
 					</div>
-
+					
 					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="pro_owner">¹ßÁÖÃ³</label>
+						<label class="col-sm-2 control-label" for="pro_owner">ë°œì£¼ì²˜</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="pro_owner" value="<%=proj_owner%>">
 						</div>
@@ -165,7 +150,7 @@
 
 
 					<div class="form-group ">
-						<label class="col-sm-2 control-label" for="describe">¼³¸í</label>
+						<label class="col-sm-2 control-label" for="describe">ì„¤ëª…</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="describe" value="<%=proj_describe%>">
 						</div>
@@ -174,7 +159,7 @@
 					
 					<div class="form-group">
 						<input type=button value="Cancel" OnClick="javascript:history.back(-1)" class="col-sm-offset-2 btn btn-default">
-						<% if (id <= 0) { %>
+						<% if (project <= 0) { %>
 						<input type="submit" class="btn btn-default btn-primary" value="add">
 						<% } else { %>
 						<input type="submit" class="btn btn-default btn-primary" value="Modify">

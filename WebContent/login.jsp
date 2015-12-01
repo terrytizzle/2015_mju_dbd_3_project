@@ -57,17 +57,20 @@
 						String user_email = rs.getString("worker_email");
 						String user_final_edu = rs.getString("worker_final_edu");
 						String user_pos_name = rs.getString("pos_name");
-
+					
 						if (request.getMethod() == "POST") {
 							String id = request.getParameter("id");
 							String pwd = request.getParameter("pwd");
-
+							
 							if (id == null || pwd == null || id.length() == 0 || pwd.length() == 0) {
-			%>
-			<div class="error">
-				<p> 아이디 비밀번호를 입력해주세요</p>
-					<%
-						} else if (id.equals(user_id) && pwd.equals(user_pwd)) {
+							%>
+							<div class="error">
+							
+							<%
+							session.setAttribute("userId", "empty");
+							response.sendRedirect("first_page.jsp");
+							
+							} else if (id.equals(user_id) && pwd.equals(user_pwd)) {
 										//로그인 성공
 										session.setAttribute("userId", user_id);
 										session.setAttribute("userName", user_name);
@@ -82,14 +85,16 @@
 										session.setAttribute("userPosname", user_pos_name);
 
 										response.sendRedirect("first_page.jsp");
-						} else {
-					%>
-					<p>아이디나 비밀번호가 잘못되었습니다.</p>
-					<%
-						}
-								}
+							} else {
+								%>
+								
+								<%
+								session.setAttribute("userId", "wrong");
+								response.sendRedirect("first_page.jsp");
 							}
-						} catch (Exception e) {
+						}
+					}
+				} catch (Exception e) {
 							out.println(e);
 						} finally {
 							if (pstmt != null) {
