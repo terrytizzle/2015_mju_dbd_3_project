@@ -58,7 +58,7 @@
 								<th>이메일</th>
 								<th>최종학력</th>
 								<th>직급</th>
-								
+								<td>권한</td>
 							</tr>
 						</thead>
 		<%
@@ -116,7 +116,7 @@ while(rs.next()) {
 								<td><%=email%></td>
 								<td><%=final_edu%></td>
 								<td><a href="workerPosition.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs"><%=p_name%></a></td>
-								
+								<td><%=final_edu%></td>
 
 							</tr>
 						</tbody>
@@ -144,9 +144,7 @@ while(rs.next()) {
 				</fieldset>
 			</form>
 		</div>
-		<div class="form-group">
-			<a href="workerCreation.jsp" class="btn btn-primary">Add Worker</a>
-		</div>
+		
 	</div>
 
 </body>
