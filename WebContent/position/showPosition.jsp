@@ -34,7 +34,7 @@
 	<div class="container">
 			<div>
 
-			<form name="form1" method="post" action="administrator.jsp">
+			<form name="form1" method="post" action="showPosition.jsp">
 				<fieldset>
 					<legend class="legend"> 직급 변경 </legend>
 					<p>
@@ -110,7 +110,7 @@ while(rs.next()) {
 								<td><%=terminate%></td>
 								<td><%=email%></td>
 								<td><%=final_edu%></td>
-								<td><a href="workerPosition.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs"><%=p_name%></a></td>
+								<td><a href="positionCreation.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs"><%=p_name%></a></td>
 								<td><%=authorization%></td>
 
 							</tr>

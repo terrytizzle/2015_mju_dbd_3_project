@@ -68,7 +68,7 @@
 										 int authorLevel = rs.getInt("authorization");
 										 %> 
 										 <fieldset>
-										 <p> <%=session.getAttribute("userName")%>님은 현재 권한레벨 : <%=authorLevel%> 입니다. </p></br>
+										 <p> <%=session.getAttribute("userDept")%>팀 <%=session.getAttribute("userName")%> <%=session.getAttribute("userPosname")%>님은 현재 권한레벨 : <%=authorLevel%> 입니다. </p></br>
 										 <%
 										 if(authorLevel <= 2){
 												%>

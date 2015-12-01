@@ -4,7 +4,9 @@
 
 String[][] menu = {
 {"http://localhost:8080/2015_mju_dbd_3_project/main.jsp", "home" },
-{"http://localhost:8080/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" }
+{"http://localhost:8080/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" },
+{"http://localhost:8080/2015_mju_dbd_3_project/project/showProject.jsp", "프로젝트 조회" }	
+
 };
 String currentMenu = request.getParameter("current");
 
@@ -68,21 +70,20 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 			<%
 					if (session.getAttribute("userId") == null) {
 				%>
-			<LI><A href="http://localhost:8080/2015_mju_dbd_3_project/worker/workerCreation.jsp" style="margin-left:150px;" >Sign up</A>
-			<a href="http://localhost:8080/2015_mju_dbd_3_project/login.jsp" style="margin-left:10px;">Login</A></LI>
+			<LI><a href="http://localhost:8080/2015_mju_dbd_3_project/login.jsp" style="margin-left:10px;">Login</A></LI>
 			<%
 					} else {
 			%>
 			
 			<!-- <LI><A href="show.jsp" style="margin-left:150px;" >My page</A>-->
 					%>
-			<LI><A href="show.jsp?id=<%= session.getAttribute("numId")%>" style="margin-left:150px;" >My page</A>
+			<LI><A href="http://localhost:8080/2015_mju_dbd_3_project/mypage/myPage.jsp?id=<%= session.getAttribute("userId")%>" style="margin-left:150px;" >My page</A>
 			
 			<a href="http://localhost:8080/2015_mju_dbd_3_project/logout.jsp" style="margin-left:10px;">Logout</A>
 			<%
-			if(session.getAttribute("per") != null){
+			if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
 			%>
-			<a href="admin.jsp" style="margin-left:10px;">admin_page</A></LI>
+			<a href="http://localhost:8080/2015_mju_dbd_3_project/position/showPosition.jsp" style="margin-left:10px;">pos_page</A></LI>
 			
 			<%
 			}}
