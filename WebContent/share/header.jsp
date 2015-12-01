@@ -4,7 +4,8 @@
 
 String[][] menu = {
 {"http://localhost:8080/2015_mju_dbd_3_project/main.jsp", "home" },
-{"http://localhost:8080/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" }
+{"http://localhost:8080/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" },
+{"http://localhost:8080/2015_mju_dbd_3_project/worker/administrator.jsp", "관리자 페이지" } // 권한 설정...
 };
 String currentMenu = request.getParameter("current");
 
