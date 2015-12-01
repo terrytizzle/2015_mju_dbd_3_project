@@ -60,7 +60,6 @@
 				user_terminate = rs.getString("worker_terminate");
 				user_email = rs.getString("worker_email");
 				user_final_edu = rs.getString("worker_final_edu");
-				
 
 			}
 		} catch (SQLException e) {
@@ -88,7 +87,7 @@
 	}
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -97,6 +96,13 @@
 <link href="../css/base.css" rel="stylesheet">
 <script src="../js/jquery-1.8.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+
+<script>
+	$(function() {
+		$(".datepicker").datepicker();
+	});
+</script>
+
 </head>
 
 <body>
@@ -107,23 +113,27 @@
 
 	<div class="container">
 		<div>
-		  <form class="form-horizontal" action="<%=actionUrl%>" method="post">
+			<form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
 					<legend class="legend">Sign Up</legend>
 
 					<%
-			  	if (id > 0) {
-			  		out.println("<input type='hidden' name='id' value='"+id+"'>");
-			  	}
-			  	%>
-			  	<%if(id<=0){ %>
+						if (id > 0) {
+							out.println("<input type='hidden' name='id' value='" + id + "'>");
+						}
+					%>
+					<%
+						if (id <= 0) {
+					%>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="id">ID</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="id" value="<%=user_id%>">
+							<input type="number" class="form-control" name="id" value="<%=user_id%>">
 						</div>
 					</div>
-				<%} %>	
+					<%
+						}
+					%>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="name">Name</label>
 						<div class="col-sm-3">
@@ -133,11 +143,13 @@
 
 
 					<%-- 신규 가입일 때만 비밀번호 입력창을 나타냄 --%>
-					<% if(id<=0){ %>
+					<%
+						if (id <= 0) {
+					%>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="pwd">Password</label>
 						<div class="col-sm-3">
-							<input type="password" class="form-control" name="pwd">
+							<input type="password" class="form-control" placeholder="60092484" name="pwd">
 						</div>
 					</div>
 
@@ -148,7 +160,9 @@
 						</div>
 					</div>
 
-					<% } %>
+					<%
+						}
+					%>
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="birth">Birth</label>
 						<div class="col-sm-3">
@@ -159,7 +173,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="dept">Department</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="dept" value="<%=user_dept%>">
+							<input type="text" class="form-control" placeholder="개발" name="dept" value="<%=user_dept%>">
 						</div>
 					</div>
 
@@ -167,7 +181,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="salary">Salary</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="salary" value="<%=user_salary%>">
+							<input type="text" class="form-control" placeholder="500" name="salary" value="<%=user_salary%>">
 						</div>
 					</div>
 
@@ -175,7 +189,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="entrance">Entrance</label>
 						<div class="col-sm-3">
-							<input type="datetime" class="form-control" name="entrance" value="<%=user_entrance%>">
+							<input type="datetime" class="form-control" name="entrance" placeholder="1990-10-09" value="<%=user_entrance%>">
 						</div>
 					</div>
 
@@ -183,7 +197,7 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="terminate">Terminate</label>
 						<div class="col-sm-3">
-							<input type="datetime" class="form-control" name="terminate" value="<%=user_terminate%>">
+							<input type="datetime" class="form-control" name="terminate" placeholder="1990-10-09" value="<%=user_terminate%>">
 						</div>
 					</div>
 
@@ -198,17 +212,23 @@
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="final_edu">Final_Edu</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="final_edu" value="<%=user_final_edu%>">
+							<input type="text" class="form-control" name="final_edu" placeholder="대학교 졸업" value="<%=user_final_edu%>">
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<input type=button value="Cancel" OnClick="javascript:history.back(-1)" class="col-sm-offset-2 btn btn-default">
-						<% if (id <= 0) { %>
+						<%
+							if (id <= 0) {
+						%>
 						<input type="submit" class="btn btn-default btn-primary" value="add">
-						<% } else { %>
+						<%
+							} else {
+						%>
 						<input type="submit" class="btn btn-default btn-primary" value="Modify">
-						<% } %>
+						<%
+							}
+						%>
 					</div>
 				</fieldset>
 			</form>

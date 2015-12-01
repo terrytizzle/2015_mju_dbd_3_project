@@ -47,30 +47,29 @@
 		errorMsgs.add("최종 학력을 반드시 입력해주세요.");
 	}
 
+	if(user_terminate == ""){
+		user_terminate = "1990-01-01";
+	}
+	
 	if (errorMsgs.size() == 0) {
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
 					"UPDATE worker " +
-					"SET worker_name=?" +
+					"SET worker_name=?, worker_birth=?, worker_dept=?, worker_salary=?, worker_entrance=?, worker_terminate=?, worker_email=?, worker_final_edu=?" +
 					"WHERE worker_id=?"
 					);
+			
 			stmt.setString(1, user_name);
-			stmt.setString(2, user_id);
-			/*
-			
-			, worker_birth=?, worker_dept=?, worker_salary=?, " +
-					"worker_entrance=?, worker_terminate=?, worker_email=?, worker_final_edu=? " +
-			
 			stmt.setString(2, user_birth);
 			stmt.setString(3, user_dept);
-			stmt.setInt(4, Integer.parseInt(user_salary));
+			stmt.setString(4, user_salary);
 			stmt.setString(5, user_entrance);
 			stmt.setString(6, user_terminate);
 			stmt.setString(7, user_email);
 			stmt.setString(8, user_final_edu);
 			stmt.setInt(9, id);
-			*/
+			
 			result = stmt.executeUpdate();
 			if (result != 1) {
 				errorMsgs.add("변경에 실패하였습니다.");
@@ -87,7 +86,7 @@
 %>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -96,7 +95,7 @@
 <link href="http://localhost:8080/2015_mju_dbd_3_project/css/base.css" rel="stylesheet">
 <script src="http://localhost:8080/2015_mju_dbd_3_project/js/jquery-1.8.2.min.js"></script>
 <script src="http://localhost:8080/2015_mju_dbd_3_project/js/bootstrap.min.js"></script>
-</html>
+
 <body>
 	<jsp:include page="../share/header.jsp">
 		<jsp:param name="current" value="home" />
@@ -110,6 +109,7 @@
 				<% for(String msg: errorMsgs) { %>
 				<li><%=msg %></li>
 				<% } %>
+				<%=user_terminate %>
 			</ul>
 		</div>
 		<div class="form-group">
@@ -126,6 +126,5 @@
 	</div>
 	
 
-
-
 </body>
+</html>

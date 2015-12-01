@@ -28,7 +28,6 @@
 	String user_final_edu = request.getParameter("final_edu");
 	String user_pos_name = request.getParameter("pos_name");
 	
-	
 	List <String> errorMsgs = new ArrayList<String>();
 	int result = 0;
 	
@@ -52,6 +51,9 @@
 		errorMsgs.add("최종 학력을 반드시 입력해주세요.");
 	}
 	
+	if(user_terminate == ""){
+		user_terminate = "1990-01-01";
+	}
 	
 	if (errorMsgs.size() == 0) {
 		try {
