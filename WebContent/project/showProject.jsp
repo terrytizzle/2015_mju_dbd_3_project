@@ -106,10 +106,16 @@
 						<td> <%=finish_date%> </td>
 						<td> <%=owner%> </td>
 						<td> <%=describe%> </td>
-						<td>
-							<a href="projectCreation.jsp?projectId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
-							<a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("project_id")%>">delete</a></td>
+						<%
+							if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){
+						%>
+							<td>
+								<a href="projectCreation.jsp?projectId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
+								<a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("project_id")%>">delete</a>
+							</td>
+						<%} %>
 					</tr>
+			
 				</tbody>
 				<%
 					}
@@ -132,9 +138,15 @@
  			</fieldset>
 			</form>
 		</div>
-		<div class="form-group">
-			<a href="projectCreation.jsp" class="btn btn-primary">Add Project</a>
-		</div>
+		<%
+			if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){
+		%>
+				<div class="form-group">
+					<a href="projectCreation.jsp" class="btn btn-primary">Add Project</a>
+				</div>
+		<%
+			} 
+		%>
 	</div>
 
 </body>
