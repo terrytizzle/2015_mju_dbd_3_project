@@ -3,10 +3,94 @@
 
 <%
 	String errorMsg = null;
+	String actionUrl;
 
-	String actionUrl = "";
+	// DB 접속을 위한 준비
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+
+	String dbUrl = "jdbc:mysql://localhost:3306/mjsolution";
+	String dbUser = "root";
+	String dbPassword = "admin";
+
+	// 사용자 정보를 위한 변수 초기화
+	String user_id = "";
+	String user_name = "";
+	String user_pwd = "";
+	String user_birth = "";
+	String user_dept = "";
+	String user_salary = "";
+	String user_entrance = "";
+	String user_terminate = "";
+	String user_email = "";
+	String user_final_edu = "";
+	String user_pos_name = "";
+
+	//post
+	String id = request.getParameter("id");
+	String name_ = request.getParameter("name_");
+	String password = request.getParameter("password");
+
+	boolean login = false;
+
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+
+		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+		stmt = conn.prepareStatement("SELECT * FROM worker");
+		rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			user_id = rs.getString("worker_id");
+			user_name = rs.getString("worker_name");
+			user_pwd = rs.getString("worker_pswd");
+			user_birth = rs.getString("worker_birth");
+			user_dept = rs.getString("worker_dept");
+			user_salary = rs.getString("worker_salary");
+			user_entrance = rs.getString("worker_entrance");
+			user_terminate = rs.getString("worker_terminate");
+			user_email = rs.getString("worker_email");
+			user_final_edu = rs.getString("worker_final_edu");
+			user_pos_name = rs.getString("pos_name");
+			
+			if (user_id.equals(id) && user_pwd.equals(password)) {
+				// 로그인 성공
+				session.setAttribute("userId", user_id);
+				session.setAttribute("userName", user_name);
+				session.setAttribute("userPwd", user_pwd);
+				session.setAttribute("userBirth", user_birth);
+				session.setAttribute("userDept", user_dept);
+				session.setAttribute("userSalary", user_name);
+				session.setAttribute("userEntrance", user_entrance);
+				session.setAttribute("userTerminate", user_terminate);
+				session.setAttribute("userEmail", user_email);
+				session.setAttribute("userFinaledu", user_final_edu);
+				session.setAttribute("userPosname", user_pos_name);
+				login = true;
+				break;
+			}
+		}
+	} catch (SQLException e) {
+		errorMsg = "SQL 에러 : " + e.getMessage();
+	} finally {
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		if (stmt != null)
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		if (conn != null)
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+	}
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,105 +103,58 @@
 </head>
 <body>
 	<jsp:include page="share/header.jsp">
-		<jsp:param name="current" value="home" />
+		<jsp:param name="current" value="login" />
 	</jsp:include>
 
 	<div class="container">
-		<fieldset>
-			<legend class="legend">Login</legend>
-
-			<%
-				request.setCharacterEncoding("utf-8");
-				Connection con = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-
-				try {
-					String DB_SERVER = "localhost:3306";
-					String DB_SERVER_USERNAME = "root";
-					String DB_SERVER_PASSWORD = "admin";
-					String DB_DATABASE = "mjsolution";
-					String JDBC_URL = "jdbc:mysql://" + DB_SERVER + "/" + DB_DATABASE;
-
-					Class.forName("com.mysql.jdbc.Driver");
-					con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
-					String sql = "select * from worker";
-					pstmt = con.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-
-					while (rs.next()) {
-						String user_id = rs.getString("worker_id");
-						String user_name = rs.getString("worker_name");
-						String user_pwd = rs.getString("worker_pswd");
-						String user_birth = rs.getString("worker_birth");
-						String user_dept = rs.getString("worker_dept");
-						String user_salary = rs.getString("worker_salary");
-						String user_entrance = rs.getString("worker_entrance");
-						String user_terminate = rs.getString("worker_terminate");
-						String user_email = rs.getString("worker_email");
-						String user_final_edu = rs.getString("worker_final_edu");
-						String user_pos_name = rs.getString("pos_name");
-					
-						if (request.getMethod() == "POST") {
-							String id = request.getParameter("id");
-							String pwd = request.getParameter("pwd");
-							
-							if (id == null || pwd == null || id.length() == 0 || pwd.length() == 0) {
-							%>
-							<div class="error">
-							
-							<%
-							session.setAttribute("userId", "empty");
-							response.sendRedirect("first_page.jsp");
-							
-							} else if (id.equals(user_id) && pwd.equals(user_pwd)) {
-										//로그인 성공
-										session.setAttribute("userId", user_id);
-										session.setAttribute("userName", user_name);
-										session.setAttribute("userPwd", user_pwd);
-										session.setAttribute("userBirth", user_birth);
-										session.setAttribute("userDept", user_dept);
-										session.setAttribute("userSalary", user_name);
-										session.setAttribute("userEntrance", user_entrance);
-										session.setAttribute("userTerminate", user_terminate);
-										session.setAttribute("userEmail", user_email);
-										session.setAttribute("userFinaledu", user_final_edu);
-										session.setAttribute("userPosname", user_pos_name);
-
-										response.sendRedirect("first_page.jsp");
-							} else {
-								%>
-								
-								<%
-								session.setAttribute("userId", "wrong");
-								response.sendRedirect("first_page.jsp");
-							}
-						}
+		<form class="form-horizontal" action="" method="post">
+			<fieldset>
+				<legend class="legend">Login</legend>
+				<%
+					if (errorMsg != null && errorMsg.length() > 0) {
+						// SQL 에러의 경우 에러 메시지 출력
+						out.print("<div class='alert'>" + errorMsg + "</div>");
 					}
-				} catch (Exception e) {
-							out.println(e);
-						} finally {
-							if (pstmt != null) {
-								try {
-									pstmt.close();
-								} catch (SQLException sqle) {
-								}
-							}
-							if (con != null) {
-								try {
-									con.close();
-								} catch (SQLException sqle) {
-								}
-							}
-						}
-					%>
+					if (request.getMethod() == "POST") {
+						if (id == null || password == null || id.length() == 0 || password.length() == 0) {
+				%>
+				<div class="error">아이디와 비밀번호를 입력하세요.</div>
+				<%
+					} else if (login) {
+							// 로그인 성공
+				%>
+				<script type=text/javascript>
+					alert(" 로그인 하였습니다.");
+					window.location.replace("main.jsp");
+				</script>
+				<%
+					} else {
+				%>
+				<div class="error">아이디나 비밀번호가 잘못되었습니다.</div>
+				<%
+					}
+					}
+				%>
+
+				<div class="form-group ">
+					<label class="col-sm-2 control-label" for="userid">ID</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" name="id">
 					</div>
-					<form method="post">
-						ID: <input type="text" name="id"> 
-						password: <input type="password" name="pwd"> 
-						<input type="submit" value="login">
-					</form>
-		</fieldset>
+				</div>
+				<div class="form-group ">
+					<label class="col-sm-2 control-label" for="pwd">Password</label>
+					<div class="col-sm-3">
+						<input type="password" class="form-control" name="password">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<input type=button value="Cancel" OnClick="javascript:history.back(-1)" class="col-sm-offset-2 btn btn-default"> <input type="submit" class="btn btn-default btn-primary" value="Login">
+				</div>
+			</fieldset>
+		</form>
 	</div>
+
 </body>
 </html>

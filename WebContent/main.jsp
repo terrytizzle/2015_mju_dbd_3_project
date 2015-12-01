@@ -26,7 +26,11 @@
 					<legend class="legend"> TITLE</legend>
 					<div id="warp">
 						<div id="top">
+						<%if(session.getAttribute("userName") == null){ %>
+							<p>환영합니다. </p>
+							<%} else{ %>
 							<p>환영합니다. <%=session.getAttribute("userName")%>님</p>
+							<%} %>
 						</div id="logo">
 						<div>
 							<fieldset>
