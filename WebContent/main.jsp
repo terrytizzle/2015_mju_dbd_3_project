@@ -26,11 +26,7 @@
 					<legend class="legend"> TITLE</legend>
 					<div id="warp">
 						<div id="top">
-						<%if(session.getAttribute("userName") == null){ %>
-							<p>환영합니다. </p>
-							<%} else{ %>
 							<p>환영합니다. <%=session.getAttribute("userName")%>님</p>
-							<%} %>
 						</div id="logo">
 						<div>
 							<fieldset>
@@ -64,31 +60,45 @@
 									pstmt = con.prepareStatement(sql);
 									rs = pstmt.executeQuery();
 										
-									 while(rs.next()) {
-										 int authorLevel = rs.getInt("authorization");
-										 %> 
-										 <fieldset>
-										 <p> <%=session.getAttribute("userName")%>님은 현재 권한레벨 : <%=authorLevel%> 입니다. </p></br>
-										 <%
-										 if(authorLevel <= 2){
+									if(rs.next()) {
+										int authorLevel = rs.getInt("authorization");
+										%> 
+										<fieldset>
+										<p> <%=session.getAttribute("userName")%>님은 현재 권한레벨 : <%=authorLevel%> 입니다. </p></br>
+										
+										<%
+										if(authorLevel <= 2){
 												%>
-														<p>success m</p>
-														<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br> 
-														<a class="nodec" href="./worker/workerManagement.jsp">직원관리</a></br>
-														<a class="nodec" href="./project/showProject.jsp">프로젝트현황</a></br> 
-														<a class="nodec" href="./">D</a></br>
+													<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br> 
+													<a class="nodec" href="./project/showProject.jsp">프로젝트 조회</a></br>
 												<%
 											}
-										 if(authorLevel == 5){
+										else if(authorLevel == 3){
+											if(session.getAttribute("userDept").equals("인사")){
 												%>
-														<a class="nodec" href="./">B</a></br>
+													<a class="nodec" href="./worker/showWorker.jsp">직원관리</a></br> 
+													
+													<a class="nodec" href="./worker/administrator.jsp">관리자 페이지</a></br>
 												<%
+											}else{%>
+													<a class="nodec" href="./worker/showWorker.jsp">직원 조회</a></br>
+											<%
 											}
-										 if(authorLevel <= 7){
-												%>
-														<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br> 
+													%><a class="nodec" href="./project/showProject.jsp">프로젝트 조회</a></br>
+										<% 
+										}
+										 else if(authorLevel == 4 || authorLevel == 5 ){
+											 %>
+											 		<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br> 
+													<a class="nodec" href="./project/showProject.jsp">프로젝트 관리</a></br>
+											<%
+										 }
+										 else if(authorLevel <= 7){
+											%>
+													<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br> 
+													<a class="nodec" href="./project/showProject.jsp">프로젝트 조회</a></br>
 												<%
-											}else{
+										 } else{
 												%><p> 기능을 사용할 수 있는 권한이 없습니다. </p><%
 											}
 										 }
