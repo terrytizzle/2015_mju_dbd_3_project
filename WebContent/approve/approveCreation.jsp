@@ -120,22 +120,39 @@
 							<thead>
 								<tr>
 									<th>프로젝트 ID</th>
-									<th>프로젝트명</th>
-									<th>시작일</th>
-									<th>종료일</th>
-									<th>발주처</th>
-									<th>프로젝트 설명</th>
+									<td><%=proj_id%></td>
 								</tr>
 							</thead>
-			  				<tbody>
+			  				<thead>
 								<tr>
-									<td><%=proj_id%></td>
+									<th>프로젝트명</th>
 									<td><%=proj_name%></td>
+								</tr>
+							</thead>
+			  				<thead>
+								<tr>
+									<th>시작일</th>
 									<td><%=proj_start%></td>
+								</tr>
+							</thead>
+			  				<thead>
+								<tr>
+									<th>종료일</th>
 									<td><%=proj_finish%></td>
+								</tr>
+							</thead>
+			  				<thead>	
+								<tr>
+									<th>발주처</th>
 									<td><%=proj_owner%></td>
+								</tr>
+							</thead>
+			  				<thead>
+								<tr>
+									<th>프로젝트 설명</th>
 									<td><%=proj_describe%></td>
 								</tr>
+							</thead>	
 							</tbody>
 				  		</table>
 				  	</div>

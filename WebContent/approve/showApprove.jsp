@@ -34,7 +34,7 @@
 	<div class="container">
 			<div>
 
-			<form name="form1" method="post" action="showPosition.jsp">
+			<form name="form1" method="post" action="showApprove.jsp">
 				<fieldset>
 					<legend class="legend"> 승인 대기 프로젝트 </legend>
 							
@@ -64,12 +64,10 @@
  Class.forName("com.mysql.jdbc.Driver");
  con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
  
-	 
-		String sql = "select * from project where project_status='0'";
-		pstmt = con.prepareStatement(sql);
-		rs = pstmt.executeQuery();
+	String sql = "select * from project where project_status='0'";
+	pstmt = con.prepareStatement(sql);
+	rs = pstmt.executeQuery();
 	
-		
 	while(rs.next()) {
 		String id = rs.getString("project_id");
 		String name = rs.getString("project_name");

@@ -87,7 +87,7 @@
 		</div>
 		<% } else if (result == 1) { %>
 		<div class="alert alert-success">
-			<b><%= proj_name %></b>의 승인 정보가 수정되었습니다.
+			<b>승인 정보가 수정되었습니다.
 		</div>
 		<div class="form-group">
 			<a href="showApprove.jsp" class="btn btn-default">목록으로</a>
