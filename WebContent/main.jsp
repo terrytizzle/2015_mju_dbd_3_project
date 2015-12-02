@@ -36,7 +36,7 @@
 		<div>
 			<form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
-					<legend class="legend"> TITLE</legend>
+					<legend class="legend">인사관리 프로그램</legend>
 					<div id="warp">
 						<div id="top">
 							<%
@@ -96,20 +96,40 @@
 										입니다.
 									</p>
 									<p>
-										<%=session.getAttribute("userWorks_name") %>
-										직무를 맡고 있습니다.
+										<%
+										
+										if (session.getAttribute("userWorks_name") != null){
+												session.getAttribute("userWorks_name");
+												%> 직무를 맡고있습니다.
+											<%
+										}else{
+											%> 
+											현재 맡고있는 직무가 없습니다.
+											<%
+										}
+										
+										%>
 									</p>
 									</br>
 									<%
 										if (authorLevel <= 2) {
 									%>
-									<p>success m</p>
-									<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br> <a class="nodec" href="./worker/workerManagement.jsp">직원관리</a></br> <a class="nodec" href="./project/showProject.jsp">프로젝트현황</a></br> <a class="nodec" href="./">D</a></br>
+									<a class="nodec" href="./approve/showApprove.jsp">프로젝트 승인</a></br>
 									<%
 										}
-												if (authorLevel == 5) {
+												if (authorLevel <= 4) {
 									%>
-									<a class="nodec" href="./">B</a></br>
+									<a class="nodec" href="./project/showProject.jsp">프로젝트 현황</a></br>
+									<%
+										}
+												if (authorLevel == 4 || authorLevel == 5) {
+									%>
+									<a class="nodec" href="./project/projectCreation.jsp">프로젝트 생성</a></br>
+									<%
+										}		
+												if (authorLevel == 3 && session.getAttribute("userDept").equals("인사") ) {
+									%>
+									<a class="nodec" href="./management/workerManagement.jsp">직원 관리</a></br>
 									<%
 										}
 												if (authorLevel <= 7) {
@@ -147,16 +167,6 @@
 											}
 										}
 									%>
-								</fieldset>
-							</div>
-							<div id="maincontents">
-								<fieldset>
-									<p>success main</p>
-									<fieldset>
-										<legend>main content</legend>
-										<p>
-											MJ solution <br>
-									</fieldset>
 								</fieldset>
 							</div>
 						</div>
