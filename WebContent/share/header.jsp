@@ -3,11 +3,11 @@
 <%
 
 String[][] menu = {
-{"http://localhost:9090/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" },
-{"http://localhost:9090/2015_mju_dbd_3_project/project/showProject.jsp", "프로젝트 조회" },	
-{"http://localhost:9090/2015_mju_dbd_3_project/approve/showApprove.jsp", "프로젝트 승인" },
-{"http://localhost:9090/2015_mju_dbd_3_project/member/memberCreation.jsp", "팀원 관리" },
-{"http://localhost:9090/2015_mju_dbd_3_project/mypage/showEval.jsp", "평가 조회" },
+{"http://localhost:8080/2015_mju_dbd_3_project/worker/showWorker.jsp", "직원조회" },
+{"http://localhost:8080/2015_mju_dbd_3_project/project/showProject.jsp", "프로젝트 조회" },	
+{"http://localhost:8080/2015_mju_dbd_3_project/approve/showApprove.jsp", "프로젝트 승인" },
+{"http://localhost:8080/2015_mju_dbd_3_project/member/memberCreation.jsp", "팀원 관리" },
+{"http://localhost:8080/2015_mju_dbd_3_project/mypage/showEval.jsp", "평가 조회" },
 
 };
 String currentMenu = request.getParameter("current");
@@ -52,7 +52,7 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 	<div class="container-fluid">
 		
 		<div class="navbar-header">
-			<a class="navbar-brand" href="http://localhost:9090/2015_mju_dbd_3_project/main.jsp">MJS</a>
+			<a class="navbar-brand" href="http://localhost:8080/2015_mju_dbd_3_project/main.jsp">MJS</a>
 		</div>
 		<div class="collapse navbar-collapse" >
 			<ul class="nav navbar-nav">
@@ -73,17 +73,17 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 				<%
 				if (session.getAttribute("userId") == null) { 
 				%>
-				<a href="http://localhost:9090/2015_mju_dbd_3_project/login.jsp" class = "navbar-link">login</a>
+				<a href="http://localhost:8080/2015_mju_dbd_3_project/login.jsp" class = "navbar-link">login</a>
 				<%
 				} else{
 					%>
-				<a href="http://localhost:9090/2015_mju_dbd_3_project/logout.jsp?id=<%= session.getAttribute("userId")%>" class = "navbar-link">logout</a>
-				<a href="http://localhost:9090/2015_mju_dbd_3_project/mypage/myPage.jsp?id=<%= session.getAttribute("userId")%>" class = "navbar-link">my page</a>
+				<a href="http://localhost:8080/2015_mju_dbd_3_project/logout.jsp?id=<%= session.getAttribute("userId")%>" class = "navbar-link">logout</a>
+				<a href="http://localhost:8080/2015_mju_dbd_3_project/mypage/myPage.jsp?id=<%= session.getAttribute("userId")%>" class = "navbar-link">my page</a>
 				
 				<%
 				if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){				
 					%>
-					<a href="http://localhost:9090/2015_mju_dbd_3_project/management/workerManagement.jsp" class = "navbar-link">pos_page</a>
+					<a href="http://localhost:8080/2015_mju_dbd_3_project/management/workerManagement.jsp" class = "navbar-link">pos_page</a>
 					<%}
 				}
 				 %>
