@@ -10,7 +10,7 @@
 		pageNo = Integer.parseInt(request.getParameter("page"));
 	} catch (NumberFormatException ex) {
 	}
-	int numInPage = 10; // 한페이지에 출력할 아이템 개수
+	int numInPage = 1000; // 한페이지에 출력할 아이템 개수
 	int startPos = (pageNo - 1) * numInPage; // 몇 번째 아이템 부터 이 페이지에?
 	int numItems, numPages;
 %>
@@ -20,7 +20,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>관리자 페이지</title>
+<title>인사 관리</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/base.css" rel="stylesheet">
 <script src="../js/jquery-1.8.2.min.js"></script>
@@ -34,27 +34,25 @@
 	<div class="container">
 			<div>
 
-			<form name="form1" method="post" action="showPosition.jsp">
+			<form name="form1" method="post" action="workerManagement.jsp">
 				<fieldset>
-					<legend class="legend"> 직급 변경 </legend>
-					<p>
+					<legend class="legend"> 인사 변경 </legend>
+					
 						<input type="text" name="workerInfo" size=30> <input type="submit" name="Submit" value="조회하기">
-					</p>
+					
 							
 				<table class="table table-bordered table-stripped">
 						<thead>
 							<tr>
 								<th>직원번호</th>
 								<th>직원이름</th>
-								<th>생일</th>
+								<th>직급</th>
 								<th>부서</th>
 								<th>연봉</th>
 								<th>입사일</th>
-								<th>퇴사일</th>
-								<th>이메일</th>
-								<th>최종학력</th>
-								<th>직급</th>
-								<th>권한</th>
+								<th>근속 기간</th>
+								<th>인센티브</th>
+								
 								
 							</tr>
 						</thead>
@@ -77,11 +75,11 @@
 		
 	 String workerInfo = request.getParameter("workerInfo");
 	 
-		String sql = "select * from worker natural join position where worker_id= '" + workerInfo + "' or worker_name= '" + workerInfo + "'";
+		String sql = "select * from worker natural join personal_management where worker_id= '" + workerInfo + "' or worker_name= '" + workerInfo + "'";
 		 pstmt = con.prepareStatement(sql);
 		 rs = pstmt.executeQuery();
 		if (workerInfo.isEmpty()) {
-			sql = "SELECT * FROM worker natural join position ORDER BY worker_id LIMIT " + startPos + ", " + numInPage;
+			sql = "SELECT * FROM worker natural join personal_management ORDER BY worker_id LIMIT " + startPos + ", " + numInPage;
 			 pstmt = con.prepareStatement(sql);
 			 rs = pstmt.executeQuery();
 		}
@@ -89,29 +87,23 @@
 while(rs.next()) {
 		String id = rs.getString("worker_id");
 		String name = rs.getString("worker_name");
-		String birth = rs.getString("worker_birth");
 		String dept = rs.getString("worker_dept");
 		String salary = rs.getString("worker_salary");
 		String entrance = rs.getString("worker_entrance");
-		String terminate = rs.getString("worker_terminate");
-		String email = rs.getString("worker_email");
-		String final_edu = rs.getString("worker_final_edu");
 		String p_name = rs.getString("pos_name");
-		String authorization = rs.getString("authorization");
+		String incentive = rs.getString("incentive");
+		String period = rs.getString("period");
 		%>
 					<tbody>
 							<tr>
 								<td><%=id%></td>
 								<td><%=name%></td>
-								<td><%=birth%></td>
+								<td><a href="positionCreation.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs"><%=p_name%></a></td>
 								<td><%=dept%></td>
 								<td><%=salary%></td>
 								<td><%=entrance%></td>
-								<td><%=terminate%></td>
-								<td><%=email%></td>
-								<td><%=final_edu%></td>
-								<td><a href="positionCreation.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs"><%=p_name%></a></td>
-								<td><%=authorization%></td>
+								<td><%=period%>년</td>
+								<td><a href="incentiveCreation.jsp?userId=<%=rs.getInt("worker_id")%>" placeholder=<%=incentive%> class="btn btn-xs"><%=incentive%></a>%</td>
 
 							</tr>
 						</tbody>

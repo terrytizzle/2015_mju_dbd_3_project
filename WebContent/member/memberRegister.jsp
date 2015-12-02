@@ -5,6 +5,7 @@
 	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
+	PreparedStatement stmt2 = null;
 	ResultSet rs = null;
 	
 	String dbUrl = "jdbc:mysql://localhost:3306/mjsolution";
@@ -98,10 +99,55 @@
 	 	<% } else if (result == 1) { %>
 	 		<div class="alert alert-success">
 	 			<b><%= member_id %></b>님이 등록되었습니다.
-	 			<a href="memberCreation.jsp" class="btn btn-primary">다른인원 추가</a>
+	 			<a href="memberCreation.jsp" class="btn btn-primary" >다른인원 추가</a>
 	 		</div>
 	 		<div>
-	 			<jsp:include page="showMember.jsp" flush="false"/>
+	 			<table class="table table-bordered table-stripped">
+						<thead>
+							<tr>
+								<th>프로젝트 번호</th>
+								<th>직원 ID</th>
+								<th>직무명</th>
+								<th>시작일</th>
+								<th>종료일</th>
+								<th>직무</th>
+							</tr>
+						</thead>
+					 		<%
+							try {
+							conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+					 		stmt2 = conn.prepareStatement("SELECT * FROM works_for where project_id = '"+ proj_id +"';");
+					 		rs = stmt2.executeQuery();
+					 		while (rs.next()) {
+					 			String p_id = rs.getString("project_id");
+					 			String w_id = rs.getString("worker_id");
+					 			String w_name = rs.getString("works_name");
+					 			String w_start = rs.getString("works_start");
+					 			String w_finish = rs.getString("works_finish");
+					 			String w_duty = rs.getString("works_duty");
+					 		%>
+						<tbody>
+							<tr>
+								<td><%=p_id%></td>
+								<td><%=w_id%></td>
+								<td><%=w_name%></td>
+								<td><%=w_start%></td>
+								<td><%=w_finish%></td>
+								<td><%=w_duty%></td>
+							</tr>
+						</tbody>
+						<%
+					 		}
+						}catch (Exception e) {
+								out.println(e);
+						} finally {
+						// 무슨 일이 있어도 리소스를 제대로 종료
+						if (rs != null) try{rs.close();} catch(SQLException e) {}
+						if (stmt2 != null) try{stmt.close();} catch(SQLException e) {}
+						if (conn != null) try{conn.close();} catch(SQLException e) {}
+					}
+						%>
+			 	</table>
 	 		</div>
 	 	<% } %>
  	</div>

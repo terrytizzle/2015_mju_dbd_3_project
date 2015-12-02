@@ -20,8 +20,7 @@
 	} catch (Exception e) {}
 	String user_id = request.getParameter("id");
 	String user_name = request.getParameter("name");
-	String user_pname = request.getParameter("pname");
-	
+	String user_incentive = request.getParameter("incentive");
 
 	List<String> errorMsgs = new ArrayList<String>();
 	int result = 0;
@@ -29,19 +28,19 @@
 	if (errorMsgs.size() == 0) {
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+			
 			stmt = conn.prepareStatement(
-					"UPDATE worker " +
-					"SET pos_name=?" +
+					"UPDATE personal_management " +
+					"SET incentive=? " +
 					"WHERE worker_id=?"
 					);
 			
-			
-			stmt.setString(1, user_pname);
+			stmt.setString(1, user_incentive);
 			stmt.setString(2, user_id);
-		
+			
 			result = stmt.executeUpdate();
 			if (result != 1) {
-				errorMsgs.add("변경에 실패하였습니다.");
+				errorMsgs.add("인센티브 지급에 실패하였습니다.");
 			}
 		} catch (SQLException e) {
 			errorMsgs.add("SQL 에러: " + e.getMessage());
@@ -85,10 +84,10 @@
 		</div>
 		<% } else if (result == 1) { %>
 		<div class="alert alert-success">
-			<b><%= user_name %></b>님의 직급이 수정되었습니다.
+			<b><%= user_name %></b>님의 인센티브가 <%= user_incentive %>%로 지급되었습니다.
 		</div>
 		<div class="form-group">
-			<a href="../main.jsp" class="btn btn-default">목록으로</a>
+			<a href="workerManagement.jsp" class="btn btn-default">이전 목록으로</a>
 		</div>
 		<%}%>
 	</div>

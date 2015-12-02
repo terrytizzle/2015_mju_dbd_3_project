@@ -75,15 +75,15 @@ FOREIGN KEY R_6 (worker_id) REFERENCES WORKER (worker_id),
 FOREIGN KEY R_8 (eval_id) REFERENCES EVALUATION (eval_id)
 );
 
+
 CREATE TABLE personal_management(
 worker_id INTEGER NOT NULL,
-total_evaluation INTEGER NOT NULL,
-count_project INTEGER NOT NULL,
 period INTEGER NOT NULL,
-incentive INTEGER NULL,
+incentive INTEGER DEFAULT '0' NULL,
 PRIMARY KEY (worker_id),
 FOREIGN KEY R_7 (worker_id) REFERENCES WORKER (worker_id)
 );
+
 
 INSERT INTO position (`pos_name`, `authorization`) VALUES ('사장', '1');
 INSERT INTO position (`pos_name`, `authorization`) VALUES ('이사', '2');
@@ -215,3 +215,111 @@ INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('70000048', '태사원', '70000048', '1988-02-03', '연구', '210', '2007-01-01', 'jjj@naver.com', '고등학교졸업', '사원');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('70000049', '배사원', '70000049', '1990-08-09', '연구', '200', '2000-01-01', 'jjjj@naver.com', '고등학교졸업', '사원');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('70000050', '백사원', '70000050', '1990-04-04', '연구', '200', '2007-01-01', 'jjjjj@naver.com', '고등학교졸업', '사원');
+
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '20', '0', '10000000');
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '20000000');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '20000001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '20000002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '20000003');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '20000004');
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '30100001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '17', '0', '30110001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '17', '0', '30120001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '16', '0', '30130001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '30140001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '18', '0', '30160001');
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '12', '0', '40100001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '8', '0', '40100002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '11', '0', '40110001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '14', '0', '40110002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '12', '0', '40120001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '11', '0', '40120002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '15', '0', '40130001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '11', '0', '40130002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '9', '0', '40140001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '13', '0', '40140002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '10', '0', '40160001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '14', '0', '40160002');
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50100001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '10', '0', '50100002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50110001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50110002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50120001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50120002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50130001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50130002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '7', '0', '50140001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '6', '0', '50140002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '9', '0', '50160001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '9', '0', '50160002');
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '6', '0', '60100001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '6', '0', '60100002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '6', '0', '60110001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '6', '0', '60110002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60120001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60120002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60120003');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130003');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130004');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60140004');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60140002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60160001');
+
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000001');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000002');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000003');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000004');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '70000005');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000006');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000007');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000008');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000009');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000010');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000011');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '70000012');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000013');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000014');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000015');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000016');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000017');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000018');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000019');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '4', '0', '70000020');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000021');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000022');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000023');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000024');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000025');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000026');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000027');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000028');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '70000029');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000030');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000031');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000032');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '5', '0', '70000033');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000034');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000035');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '4', '0', '70000036');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000037');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000038');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000039');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000040');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000041');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000042');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '70000043');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000044');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '2', '0', '70000045');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000046');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000047');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000048');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '70000049');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000050');
