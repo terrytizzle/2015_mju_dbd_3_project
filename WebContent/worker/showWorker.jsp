@@ -64,28 +64,7 @@
 
 
 					<table class="table table-bordered table-stripped">
-						<thead>
-							<tr>
-								<th>직원번호</th>
-								<th>직원이름</th>
-								<th>생일</th>
-								<th>부서</th>
-								<th>연봉</th>
-								<th>입사일</th>
-								<th>퇴사일</th>
-								<th>이메일</th>
-								<th>최종학력</th>
-								<th>직급</th>
-								<%
-								if(session.getAttribute("userId") != null){	
-									if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
-										
-								%>
-								<th></th>
-								<% }}%>
-							</tr>
-
-						</thead>
+						
 
 						<%
 							request.setCharacterEncoding("utf-8");
@@ -128,6 +107,30 @@
 
 										if (workerInfo.equals(id) || workerInfo.equals(name)) {
 						%>
+						
+						<thead>
+							<tr>
+								<th>직원번호</th>
+								<th>직원이름</th>
+								<th>생일</th>
+								<th>부서</th>
+								<th>연봉</th>
+								<th>입사일</th>
+								<th>퇴사일</th>
+								<th>이메일</th>
+								<th>최종학력</th>
+								<th>직급</th>
+								<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
+										
+								%>
+								<th></th>
+								<% }}%>
+							</tr>
+
+						</thead>
+						
 						<tbody>
 							<tr>
 								<td><%=id%></td>

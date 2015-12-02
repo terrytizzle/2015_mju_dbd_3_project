@@ -60,21 +60,7 @@
 					</p>
 		
  			<table class="table table-bordered table-stripped">
-				<thead>
-				 <tr>
-					 <th>프로젝트 ID</th>
-					 <th>프로젝트 이름</th>
-					 <th>시작일자</th>
-					 <th>종료일자</th>
-					 <th>발주처</th>
-					 <th>프로젝트 설명</th>
-					
-								<th></th>
-					
-							</tr>
-				 </tr>
-				 </thead>
-				 
+				
 				<%
 					request.setCharacterEncoding("utf-8");	 
 					Connection con = null;
@@ -115,6 +101,18 @@
 				
 						if (projectInfo.equals(id) || projectInfo.equals(name)) {
 				%> 
+				<thead>
+				<tr>
+					<th>프로젝트 ID</th>
+					<th>프로젝트 이름</th>
+					<th>시작일자</th>
+					<th>종료일자</th>
+					<th>발주처</th>
+					<th>프로젝트 설명</th>
+					<th></th>
+				 </tr>
+				 </thead>
+				 
 				<tbody>
 					<tr>
 						<td> <%=id%> </td>
