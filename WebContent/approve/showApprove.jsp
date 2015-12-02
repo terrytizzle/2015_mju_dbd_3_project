@@ -31,6 +31,18 @@
 	<jsp:param name="current" value="home" /> 
 	</jsp:include>
 
+	<%
+	 if(session.getAttribute("userId") == null){ 
+	%>
+
+	<script type=text/javascript>
+			alert("권한이 없습니다. 로그인하세요.");
+			window.location.replace("../login.jsp");
+		</script>
+	<%
+	 }
+	%>
+
 	<div class="container">
 			<div>
 
@@ -39,17 +51,7 @@
 					<legend class="legend"> 승인 대기 프로젝트 </legend>
 							
 				<table class="table table-bordered table-stripped">
-						<thead>
-							<tr>
-								<th>프로젝트 ID</th>
-								<th>프로젝트명</th>
-								<th>시작일</th>
-								<th>종료일</th>
-								<th>발주처</th>
-								<th>설명</th>
-								<th></th>
-							</tr>
-						</thead>
+						
 		<%
  request.setCharacterEncoding("utf-8");
  Connection con = null;
@@ -78,6 +80,23 @@
 		String status = rs.getString("project_status");
 		
 %>
+					<thead>
+							<tr>
+								<th>프로젝트 ID</th>
+								<th>프로젝트명</th>
+								<th>시작일</th>
+								<th>종료일</th>
+								<th>발주처</th>
+								<th>설명</th>
+								<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사")){
+										
+								%>
+								<th></th>
+								<% }}%>
+							</tr>
+						</thead>
 					<tbody>
 							<tr>
 								<td><%=id%></td>
