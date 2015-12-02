@@ -8,8 +8,10 @@
 	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
+	PreparedStatement stmt2 = null;
 	ResultSet rs = null;
-
+	
+	
 	String dbUrl = "jdbc:mysql://localhost:3306/mjsolution";
 	String dbUser = "root";
 	String dbPassword = "admin";
@@ -26,6 +28,7 @@
 	String user_email = "";
 	String user_final_edu = "";
 	String user_pos_name = "";
+	String userWorks_name = "";
 
 	//post
 	String id = request.getParameter("id");
@@ -39,8 +42,9 @@
 
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 		stmt = conn.prepareStatement("SELECT * FROM worker");
+		
 		rs = stmt.executeQuery();
-
+		
 		while (rs.next()) {
 			user_id = rs.getString("worker_id");
 			user_name = rs.getString("worker_name");
@@ -53,6 +57,9 @@
 			user_email = rs.getString("worker_email");
 			user_final_edu = rs.getString("worker_final_edu");
 			user_pos_name = rs.getString("pos_name");
+			
+			
+
 			
 			if (user_id.equals(id) && user_pwd.equals(password)) {
 				// 로그인 성공
@@ -71,6 +78,15 @@
 				break;
 			}
 		}
+		
+		stmt2 = conn.prepareStatement("select works_name from works_For where worker_id='" + user_id +"'");
+		rs = stmt2.executeQuery();
+		while (rs.next()) {
+			userWorks_name = rs.getString("works_name");
+
+			session.setAttribute("userWorks_name", userWorks_name);
+		}
+		
 	} catch (SQLException e) {
 		errorMsg = "SQL 에러 : " + e.getMessage();
 	} finally {

@@ -48,14 +48,12 @@
 					session.setAttribute("wName", workerName);
 					}
 					
-					session.setAttribute("PM", "PM");
 					String uWorks_name = (String)session.getAttribute("userWorks_name");
 					String userId = (String)session.getAttribute("userId");
 					String pId = (String)session.getAttribute("pId");
 					String wId = (String)session.getAttribute("wId");
 					String wName = (String)session.getAttribute("wName");
 					String classify ="";
-					String pm= (String)session.getAttribute("PM");
 					%>
 	<div class="container">
 		<div>
@@ -75,18 +73,17 @@
 							</tr>
 							<%
 							
-							//if( uWorks_name==pm){
+							if(uWorks_name.equals("PM")){
 								%>
 								<tr>
 								<td>평가 구분  : </td>
 								<td>
 								<input type="radio" name="classify_eval" value=1>PM
 								<input type="radio" name="classify_eval" value=2>고객
-								<input type="radio" name="classify_eval" value=3>동료
 								</td>
 							</tr>
 								<%
-							//}
+							}
 							
 							
 							%>
@@ -143,11 +140,11 @@
 							int commu_eval= Integer.parseInt(request.getParameter("commu_eval"));
 							int score = work_eval+commu_eval;
 							
-							//if(uWorks_name==pm){
+							if(uWorks_name.equals("PM")){
 								classify = request.getParameter("classify_eval"); //1은 PM 2는 고객 3은 동료
-							//} else{
-							//	classify="3";//동료
-							//}
+							} else{
+								classify="3";//동료
+							}
 							
 							String eval_id="";
 							

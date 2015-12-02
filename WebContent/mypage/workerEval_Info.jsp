@@ -175,7 +175,8 @@
 						while (rss.next()) {
 							userWorks_name = rss.getString("works_name");
 						}
-						session.setAttribute("userWorks_name", userWorks_name);
+						
+						
 						
 						String ssql = "select w.worker_id, w.worker_name, f.works_name, f.works_start, f.works_finish, f.works_duty from worker w  join works_for f on w.worker_id = f.worker_id where f.project_id='" +projectId+ "'";
 					
