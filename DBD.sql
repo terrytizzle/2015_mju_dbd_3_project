@@ -323,3 +323,16 @@ INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000048');
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '70000049');
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '1', '0', '70000050');
+
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('1', '70000001', '개발', '2015-12-02', '2016-02-28', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('1', '70000002', '개발', '2015-12-02', '2016-02-28', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('1', '70000003', '개발', '2015-12-02', '2016-02-28', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('1', '70000004', '개발', '2015-12-03', '2016-02-28', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('1', '70000005', '디자인', '2015-12-01', '2015-12-08', 'UI 디자인');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('1', '70000006', '테스트', '2016-01-10', '2016-02-28', '프로그램 테스트');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('2', '70000001', '개발', '2015-12-25', '2016-04-30', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('2', '70000002', '개발', '2015-12-25', '2016-04-30', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('2', '70000009', '개발', '2015-12-25', '2016-04-30', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('2', '40120001', 'PM', '2015-12-04', '2016-04-30', 'PM');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('2', '60110002', '개발', '2015-12-25', '2016-04-30', 'S/W개발');
+INSERT INTO works_for (`project_id`, `worker_id`, `works_name`, `works_start`, `works_finish`, `works_duty`) VALUES ('2', '70000040', '디자인', '2015-12-11', '2015-12-19', '프로젝트 디자');
