@@ -95,6 +95,8 @@
 		<jsp:param name="current" value="home" />
 	</jsp:include>
 
+
+	
 	<div class="container">
  		<% if (errorMsgs.size() > 0) { %>
  			<div class="alert alert-danger">

@@ -97,6 +97,31 @@
 <script src="http://localhost:8080/2015_mju_dbd_3_project/js/bootstrap.min.js"></script>
 
 <body>
+
+<%
+		if (session.getAttribute("userId") == null) {
+	%>
+
+	<script type=text/javascript>
+		alert("잘못된 경로입니다.");
+		window.location.replace("../login.jsp");
+	</script>
+	<%
+		}
+		if (session.getAttribute("userId") != null) {
+			if (!(session.getAttribute("userDept").equals("인사")
+					&& session.getAttribute("userPosname").equals("부장"))) {
+	%>
+
+	<script type=text/javascript>
+		alert("권한이 없습니다.");
+		window.location.replace("../main.jsp");
+	</script>
+	<%
+		}
+		}
+	%>
+
 	<jsp:include page="../share/header.jsp">
 		<jsp:param name="current" value="home" />
 	</jsp:include>

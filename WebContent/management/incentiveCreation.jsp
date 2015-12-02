@@ -92,7 +92,30 @@
 	<jsp:include page="../share/header.jsp">
 		<jsp:param name="current" value="home" />
 	</jsp:include>
+	
+	<%
+		if (session.getAttribute("userId") == null) {
+	%>
 
+	<script type=text/javascript>
+		alert("잘못된 경로입니다.");
+		window.location.replace("../login.jsp");
+	</script>
+	<%
+		}
+		if (session.getAttribute("userId") != null) {
+			if (!(session.getAttribute("userDept").equals("인사")
+					&& session.getAttribute("userPosname").equals("부장"))) {
+	%>
+
+	<script type=text/javascript>
+		alert("권한이 없습니다.");
+		window.location.replace("../main.jsp");
+	</script>
+	<%
+		}
+		}
+	%>
 <div class="container">
 		<div>
 		  <form class="form-horizontal" action="<%=actionUrl%>" method="post">
