@@ -50,7 +50,11 @@
 			
 			<form name="form1" method="post" action="showProject.jsp">
 				<fieldset>
-					<legend class="legend"> 프로젝트 검색 </legend>
+					<div class="form-group">
+					<legend class="legend"> 프로젝트 조회
+						<a href="showProjectList.jsp" class="btn btn-primary">전체 프로젝트 </a>
+						</div>
+					</legend>
 					<p>
 						<input type="text" name="projectInfo" size=30> <input type="submit" name="Submit" value="조회하기">
 					</p>

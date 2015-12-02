@@ -162,7 +162,7 @@ INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60130002', '유대리', '60130002', '1988-12-20', '연구', '370', '2012-03-02', 'qq@naver.com', '대학교 졸업', '대리');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60130003', '명대리', '60130003', '1988-11-19', '연구', '380', '2012-03-02', 'rr@naver.com', '대학교 졸업', '대리');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60130004', '배대리', '60130004', '1988-07-13', '연구', '330', '2012-03-02', 'ss@naver.com', '대학교 졸업', '대리');
-INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60140001', '백대리', '60140004', '1988-04-02', '영업', '350', '2012-03-02', 'tt@naver.com', '대학교 졸업', '대리');
+INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60140001', '백대리', '60140001', '1988-04-02', '영업', '350', '2012-03-02', 'tt@naver.com', '대학교 졸업', '대리');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60140002', '황대리', '60140002', '1988-02-20', '영업', '320', '2012-03-02', 'uu@naver.com', '대학교 졸업', '대리');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('60160001', '원대리', '60160001', '1990-03-02', '법무', '350', '2009-03-02', 'vv@naver.com', '고등학교 졸업', '대리');
 INSERT INTO worker (`worker_id`, `worker_name`, `worker_pswd`, `worker_birth`, `worker_dept`, `worker_salary`, `worker_entrance`, `worker_email`, `worker_final_edu`, `pos_name`) VALUES ('70000001', '김사원', '70000001', '1970-01-01', '인사', '200', '2000-01-01', 'a@naver.com', '대학교졸업', '사원');
@@ -269,7 +269,7 @@ INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130002');
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130003');
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60130004');
-INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60140004');
+INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60140001');
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60140002');
 INSERT INTO personal_management ( `period`, `incentive`, `worker_id`) VALUES ( '3', '0', '60160001');
 

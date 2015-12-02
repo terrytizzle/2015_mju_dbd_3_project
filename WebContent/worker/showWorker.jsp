@@ -52,7 +52,11 @@
 
 			<form name="form1" method="post" action="showWorker.jsp">
 				<fieldset>
-					<legend class="legend"> 직원 검색 </legend>
+					<div class="form-group">
+					<legend class="legend"> 직원 조회
+						<a href="showWorkerList.jsp" class="btn btn-primary">전체 직원</a>
+						</div>
+					</legend>
 
 					<p>
 						<input type="text" name="workerInfo" size=30> <input type="submit" name="Submit" value="조회하기">

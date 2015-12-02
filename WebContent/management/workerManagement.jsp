@@ -55,10 +55,13 @@
 	%>
 	<div class="container">
 			<div>
-
 			<form name="form1" method="post" action="workerManagement.jsp">
 				<fieldset>
-					<legend class="legend"> 인사 변경 </legend>
+					<div class="form-group">
+					<legend class="legend"> 인사 변경
+					<a href="workerManagementList.jsp" class="btn btn-primary">인사 변경 조회</a>
+					</div> 
+				</legend>
 					
 						<input type="text" name="workerInfo" size=30> <input type="submit" name="Submit" value="조회하기">
 					
