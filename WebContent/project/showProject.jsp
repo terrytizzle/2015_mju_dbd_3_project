@@ -109,7 +109,13 @@
 					<th>종료일자</th>
 					<th>발주처</th>
 					<th>프로젝트 설명</th>
-					<th></th>
+					<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){
+										
+								%>
+								<th></th>
+					<% }}%>
 				 </tr>
 				 </thead>
 				 
@@ -122,7 +128,7 @@
 						<td> <%=owner%> </td>
 						<td> <%=describe%> </td>
 						<% 
-						if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){	
+						if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){	
 						%>
 						<td><a href="projectCreation.jsp?projectId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
 						<%
@@ -157,7 +163,7 @@
 		</div>
 		<%
 			if(session.getAttribute("userId") != null){	
-			if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
+			if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){
 		%>
 		<div class="form-group">
 			<a href="projectCreation.jsp" class="btn btn-primary">Add Project</a>

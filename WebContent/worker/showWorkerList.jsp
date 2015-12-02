@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 
-	<%
-	 if(session.getAttribute("userId") == null){ 
-	%>
-
-	<script type=text/javascript>
-			alert("권한이 없습니다. 로그인하세요.");
-			window.location.replace("../login.jsp");
-		</script>
-	<%
-	 }
-	%>
-
+	
 <%
 	request.setCharacterEncoding("utf-8");
 	Connection con = null;
@@ -46,6 +35,17 @@
 	<jsp:param name="current" value="home" /> 
 	</jsp:include>
 	
+	<%
+	 if(session.getAttribute("userId") == null){ 
+	%>
+
+	<script type=text/javascript>
+			alert("권한이 없습니다. 로그인하세요.");
+			window.location.replace("../login.jsp");
+		</script>
+	<%
+	 }
+	%>
 	
 	
 	<div class="container">
@@ -69,7 +69,13 @@
 								<th>이메일</th>
 								<th>최종학력</th>
 								<th>직급</th>
+								<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
+										
+								%>
 								<th></th>
+								<% }}%>
 							</tr>
 						</thead>
 
@@ -103,9 +109,17 @@
 								<td><%=email%></td>
 								<td><%=final_edu%></td>
 								<td><%=p_name%></td>
-								<td>
-								<a href="workerCreation.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs">modify</a>
-								</td>
+								<% 
+								if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){	
+								%>
+								<td><a href="workerCreation.jsp?userId=<%=rs.getInt("worker_id")%>" class="btn btn-xs">modify</a> 
+								<%
+								if(session.getAttribute("userId").equals("1")){
+								%> 
+								<a href="#" class="btn btn-xs btn-danger" data-action="delete" data-id="<%=rs.getInt("worker_id")%>">delete</a>
+								 <%}%>
+								 </td>
+								<%} %>
 							</tr>
 						</tbody>
 						<%
@@ -122,9 +136,14 @@
 				</fieldset>
 			</form>
 		</div>
+		<%
+			if(session.getAttribute("userId") != null){	
+			if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
+		%>
 		<div class="form-group">
 			<a href="workerCreation.jsp" class="btn btn-primary">Add Worker</a>
 		</div>
+		<%  }} %>
 	</div>
 
 </body>

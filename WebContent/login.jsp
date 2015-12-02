@@ -9,6 +9,7 @@
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	PreparedStatement stmt2 = null;
+	PreparedStatement stmt3 = null;
 	ResultSet rs = null;
 	
 	
@@ -29,7 +30,8 @@
 	String user_final_edu = "";
 	String user_pos_name = "";
 	String userWorks_name = "";
-
+	String user_project_id = "";
+	
 	//post
 	String id = request.getParameter("id");
 	String name_ = request.getParameter("name_");
@@ -83,8 +85,20 @@
 		rs = stmt2.executeQuery();
 		while (rs.next()) {
 			userWorks_name = rs.getString("works_name");
-
+			if(userWorks_name.equals(null)){
+				userWorks_name = "임시";
+				session.setAttribute("userWorks_name", userWorks_name);
+			}else{
 			session.setAttribute("userWorks_name", userWorks_name);
+			}
+		}
+		
+		stmt3 = conn.prepareStatement("select project_id from works_For where worker_id='" + user_id +"'");
+		rs = stmt3.executeQuery();
+		while (rs.next()) {
+			user_project_id = rs.getString("project_id");
+
+			session.setAttribute("userProject_id", user_project_id);
 		}
 		
 	} catch (SQLException e) {

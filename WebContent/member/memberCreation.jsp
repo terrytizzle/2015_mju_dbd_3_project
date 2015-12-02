@@ -38,7 +38,17 @@
 	<jsp:include page="../share/header.jsp">
 		<jsp:param name="current" value="home" />
 	</jsp:include>
+	<%
+	 if(session.getAttribute("userId") == null){ 
+	%>
 
+	<script type=text/javascript>
+			alert("권한이 없습니다. 로그인하세요.");
+			window.location.replace("../login.jsp");
+		</script>
+	<%
+	 }
+	%>
 	<div class="container">
 		<div>
 		  <form class="form-horizontal" action="memberRegister.jsp" method="post">

@@ -198,8 +198,8 @@
 		</div>
 
 		<%
-								if(session.getAttribute("userId") != null){	
-									if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
+			if(session.getAttribute("userId") != null){	
+			if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){
 										
 								%>
 		<div class="form-group">

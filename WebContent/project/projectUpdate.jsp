@@ -94,19 +94,7 @@
 	</script>
 	<%
 		}
-		if (session.getAttribute("userId") != null) {
-			if (!(session.getAttribute("userDept").equals("인사")
-					&& session.getAttribute("userPosname").equals("부장"))) {
-	%>
-
-	<script type=text/javascript>
-		alert("권한이 없습니다.");
-		window.location.replace("../main.jsp");
-	</script>
-	<%
-		}
-		}
-	%>
+		%>
 	<div class="container">
 		<% if (errorMsgs.size() > 0) { %>
 		<div class="alert alert-danger">

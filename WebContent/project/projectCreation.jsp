@@ -25,14 +25,17 @@
 	String proj_finish = "";
 	String proj_owner = "";
 	String proj_describe = "";
-
+	String project_s = "";
+	
 	// Request로 ID가 있는지 확인
 	int project = 0;
 	try {
 		project = Integer.parseInt(request.getParameter("projectId"));
 	} catch (Exception e) {
 	}
-
+	
+	project_s = Integer.toString(project);
+	
 	if (project > 0) {
 		// Request에 id가 있으면 update모드라 가정
 		actionUrl = "projectUpdate.jsp";
@@ -100,12 +103,75 @@
 	<jsp:param name="current" value="home" />
 	</jsp:include>
  
+ 
+ <%
+		if (session.getAttribute("userId") == null) {
+	%>
+
+	<script type=text/javascript>
+		alert("잘못된 경로입니다.");
+		window.location.replace("../login.jsp");
+	</script>
+	<%
+		}
+	if (session.getAttribute("userId") != null && project > 0) {
+	
+			if (!(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장"))) {
+				%>
+				<script type=text/javascript>
+					alert("프로젝트 수정 권한이 없습니다.");
+					window.location.replace("../main.jsp");
+				</script>
+				<%
+			} if(!(session.getAttribute("userWorks_name").equals("PM"))){
+					
+					%>
+					<script type=text/javascript>
+					alert("PM 직무가 아닙니다.");
+				window.location.replace("../main.jsp");
+			</script>
+				<%
+				} if(!(session.getAttribute("userProject_id").equals(project_s))){
+						%>
+						<script type=text/javascript>
+						alert("해당 프로젝트의 PM이 아닙니다.");
+					window.location.replace("../main.jsp");
+				</script>
+					<%
+					}
+				
+
+		
+		}
+	if (session.getAttribute("userId") != null && project <= 0) {
+		if (!(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장"))) {	
+				%>
+				<script type=text/javascript>
+				alert("프로젝트 생성 권한이 없습니다.");
+			window.location.replace("../main.jsp");
+		</script>
+				<%
+			} if(session.getAttribute("userWorks_name").equals("PM")){
+				%>
+				<script type=text/javascript>
+				alert("이미 담당하고 있는 프로젝트가 있습니다.");
+			window.location.replace("../main.jsp");
+		</script>
+				<%
+				
+				}
+								
+		}
+ 	
+	%>
+ 	
+ 
  <div class="container">
 		<div>
 		  <form class="form-horizontal" action="<%=actionUrl%>" method="post">
 				<fieldset>
 					<legend class="legend">Make project</legend>
-
+				
 					<%
 					  	if (project > 0) {
 					  		out.println("<input type='hidden' name='id' value='"+project+"'>");
