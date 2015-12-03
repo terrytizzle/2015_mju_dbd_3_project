@@ -40,7 +40,7 @@
 
 			<form name="form1" method="post" action="showEval.jsp">
 				<fieldset>
-					<legend class="legend"> 평가 검색 </legend>
+					<legend class="legend"> 직원 검색 </legend>
 					<p>
 						<input type="text" name="workerInfo" size=30> <input type="submit" name="Submit" value="조회하기">
 					</p>

@@ -91,6 +91,24 @@
 						rs = pstmt.executeQuery();
 						String gender;
 						
+						%> 
+						<thead>
+						<tr>
+							<th>프로젝트 ID</th>
+							<th>프로젝트 이름</th>
+							<th>시작일자</th>
+							<th>종료일자</th>
+							<th>발주처</th>
+							<th>프로젝트 설명</th>
+							<% 
+						if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){	
+						%>
+							<th></th>
+							<%} %>
+							</tr>
+				 </thead>
+							<%
+						
 						while(rs.next()) {
 						String id = rs.getString("project_id");
 						String name = rs.getString("project_name");
@@ -100,24 +118,14 @@
 						String describe = rs.getString("project_describe");
 				
 						if (projectInfo.equals(id) || projectInfo.equals(name)) {
-				%> 
-				<thead>
-				<tr>
-					<th>프로젝트 ID</th>
-					<th>프로젝트 이름</th>
-					<th>시작일자</th>
-					<th>종료일자</th>
-					<th>발주처</th>
-					<th>프로젝트 설명</th>
-					<%
+
 								if(session.getAttribute("userId") != null){	
 									if(session.getAttribute("userPosname").equals("과장") || session.getAttribute("userPosname").equals("차장")){
 										
-								%>
-								<th></th>
-					<% }}%>
-				 </tr>
-				 </thead>
+								
+							
+					 }}%>
+				 
 				 
 				<tbody>
 					<tr>

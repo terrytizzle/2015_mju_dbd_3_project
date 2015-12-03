@@ -66,7 +66,7 @@
 									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사")){
 										
 								%>
-								<th></th>
+								<th>승인여부</th>
 								<% }}%>
 							</tr>
 						</thead>

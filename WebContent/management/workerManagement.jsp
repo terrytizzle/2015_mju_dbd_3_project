@@ -68,18 +68,7 @@
 							
 				<table class="table table-bordered table-stripped">
 				
-									<thead>
-						<tr>
-							<th>직원번호</th>
-							<th>직원이름</th>
-							<th>직급</th>
-							<th>부서</th>
-							<th>연봉</th>
-							<th>입사일</th>
-							<th>근속 기간</th>
-							<th>인센티브</th>
-						</tr>
-					</thead>
+
 						
 		<%
  request.setCharacterEncoding("utf-8");
@@ -108,6 +97,20 @@
 			 pstmt = con.prepareStatement(sql);
 			 rs = pstmt.executeQuery();
 		}
+		%>
+											<thead>
+						<tr>
+							<th>직원번호</th>
+							<th>직원이름</th>
+							<th>직급</th>
+							<th>부서</th>
+							<th>연봉</th>
+							<th>입사일</th>
+							<th>근속 기간</th>
+							<th>인센티브</th>
+						</tr>
+					</thead>
+		<%
 		
 while(rs.next()) {
 		String id = rs.getString("worker_id");
@@ -119,8 +122,6 @@ while(rs.next()) {
 		String incentive = rs.getString("incentive");
 		String period = rs.getString("period");
 		%>
-
-					
 					<tbody>
 							<tr>
 								<td><%=id%></td>

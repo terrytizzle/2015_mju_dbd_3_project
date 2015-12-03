@@ -63,7 +63,7 @@
 					</div>	
 					<div class="form-group ">
 						<label class="col-sm-2 control-label" for="member_id">멤버id</label>
-						<input type=button value="직원조회" OnClick="window.open('../worker/showWorker.jsp','','width=1000 height=600')" class="col-sm-offset-2 btn btn-default">
+						<input type=button value="직원조회" OnClick="window.open('../worker/showWorker.jsp','','width=1000 height=600 scrollbars=yes')" class="col-sm-offset-2 btn btn-default">
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="member_id">
 						</div>

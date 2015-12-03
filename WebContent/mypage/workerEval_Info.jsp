@@ -197,7 +197,16 @@
 
 						<tbody>
 							<tr>
+							<%if( userId.equals(workerId)){
+							%>
+								<td><%=workerId%></td>
+							<%
+							} else{
+							%>
 							<td><a href="workerEval.jsp?workerId=<%=workerId%>&projectId=<%=projectId%>&workerName=<%=workerName%>" target="_blank"class="btn btn-xs"><%=workerId%></a></td>
+							<% 
+								}
+							%>	
 								<td><%=workerName%></td>
 								<td><%=sdate%></td>
 								<td><%=fdate%></td>

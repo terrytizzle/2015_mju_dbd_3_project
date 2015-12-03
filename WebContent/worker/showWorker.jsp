@@ -100,7 +100,7 @@
 										String dept = rs.getString("worker_dept");
 										String salary = rs.getString("worker_salary");
 										String entrance = rs.getString("worker_entrance");
-										String terminate = rs.getString("worker_terminate");
+								
 										String email = rs.getString("worker_email");
 										String final_edu = rs.getString("worker_final_edu");
 										String p_name = rs.getString("pos_name");
@@ -114,9 +114,14 @@
 								<th>직원이름</th>
 								<th>생일</th>
 								<th>부서</th>
+								
+																							<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사") || session.getAttribute("userPosname").equals("부장") ){
+								%>
 								<th>연봉</th>
+								<% }}%>
 								<th>입사일</th>
-								<th>퇴사일</th>
 								<th>이메일</th>
 								<th>최종학력</th>
 								<th>직급</th>
@@ -136,10 +141,13 @@
 								<td><%=id%></td>
 								<td><%=name%></td>
 								<td><%=birth%></td>
-								<td><%=dept%></td>
+								<td><%=dept%></td>															<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사") || session.getAttribute("userPosname").equals("부장") ){
+								%>
 								<td><%=salary%></td>
+								<% }}%>
 								<td><%=entrance%></td>
-								<td><%=terminate%></td>
 								<td><%=email%></td>
 								<td><%=final_edu%></td>
 								<td><%=p_name%></td>
