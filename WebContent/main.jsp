@@ -97,10 +97,10 @@
 									</p>
 									<p>
 										<%
-										
 										if (session.getAttribute("userWorks_name") != null){
-												session.getAttribute("userWorks_name");
-												%> 직무를 맡고있습니다.
+											%>
+												<%=session.getAttribute("userWorks_name")%>
+												 직무를 맡고있습니다.
 											<%
 										}else{
 											%> 
@@ -135,6 +135,7 @@
 												if (authorLevel <= 7) {
 									%>
 									<a class="nodec" href="./worker/showWorker.jsp">직원조회</a></br>
+									<a class="nodec" href="./mypage/showEval.jsp">평가조회</a></br>
 									<%
 										} else {
 									%><p>기능을 사용할 수 있는 권한이 없습니다.</p>
