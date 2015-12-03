@@ -51,6 +51,25 @@
 					<legend class="legend"> 승인 대기 프로젝트 </legend>
 							
 				<table class="table table-bordered table-stripped">
+				
+				
+				<thead>
+							<tr>
+								<th>프로젝트 ID</th>
+								<th>프로젝트명</th>
+								<th>시작일</th>
+								<th>종료일</th>
+								<th>발주처</th>
+								<th>설명</th>
+								<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사")){
+										
+								%>
+								<th></th>
+								<% }}%>
+							</tr>
+						</thead>
 						
 		<%
  request.setCharacterEncoding("utf-8");
@@ -80,23 +99,7 @@
 		String status = rs.getString("project_status");
 		
 %>
-					<thead>
-							<tr>
-								<th>프로젝트 ID</th>
-								<th>프로젝트명</th>
-								<th>시작일</th>
-								<th>종료일</th>
-								<th>발주처</th>
-								<th>설명</th>
-								<%
-								if(session.getAttribute("userId") != null){	
-									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사")){
-										
-								%>
-								<th></th>
-								<% }}%>
-							</tr>
-						</thead>
+					
 					<tbody>
 							<tr>
 								<td><%=id%></td>
@@ -105,9 +108,14 @@
 								<td><%=finish_date%></td>
 								<td><%=owner%></td>
 								<td><%=describe%></td>
+									<%
+								if(session.getAttribute("userId") != null){	
+									if(session.getAttribute("userPosname").equals("사장") || session.getAttribute("userPosname").equals("이사")){
+								%>
 								<td>
 								<a href="approveCreation.jsp?projectId=<%=rs.getInt("project_id")%>" class="btn btn-xs">modify</a>
 								</td>
+								<% }}%>
 							</tr>
 						</tbody>
 		

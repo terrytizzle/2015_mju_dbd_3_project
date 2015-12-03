@@ -83,7 +83,7 @@ if (conn != null) try{conn.close();} catch(SQLException e) {}
 				<%
 				if(session.getAttribute("userDept").equals("인사") && session.getAttribute("userPosname").equals("부장")){				
 					%>
-					<a href="http://localhost:8080/2015_mju_dbd_3_project/management/workerManagement.jsp" class = "navbar-link">pos_page</a>
+					<a href="http://localhost:8080/2015_mju_dbd_3_project/management/workerManagement.jsp" class = "navbar-link">인사 관리</a>
 					<%}
 				}
 				 %>
